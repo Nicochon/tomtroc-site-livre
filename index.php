@@ -29,9 +29,29 @@ try {
             $adminController = new AdminController();
             $adminController->displayCreateUserForm();
             break;
+
+        case 'createUser':
+            $adminController = new AdminController();
+            $adminController->createUser();
+            break;
+
         case 'admin' :
             $adminController = new AdminController();
             $adminController->showAdmin();
+            break;
+
+        case 'updatePhotoForm':
+            $adminController = new AdminController();
+            $adminController->displayUpdatePhotoForm();
+
+        case 'uploadProfilPicture':
+            $adminController = new AdminController();
+            $adminController->uploadProfilPicture();
+            break;
+
+        case 'updateInfoUser':
+            $adminController = new AdminController();
+            $adminController->updateInfoUser();
             break;
     }
 } catch (Exception $e) {

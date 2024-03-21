@@ -15,3 +15,5 @@
     define('DB_USER', 'root');
     define('DB_PASS', '');
 
+    define('ROOT_FS', realpath( dirname(__FILE__). '/..'));
+    define('ROOT_DIR',$_SERVER['HTTP_X_FORWARDED_PROTO'].'://'.$_SERVER['HTTP_HOST']);

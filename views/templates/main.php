@@ -13,44 +13,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emilie Forteroche</title>
+    <title>TomTroc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/myAccount.css">
     <link rel="stylesheet" href="./css/footer.css">
 </head>
 
 <body>
-<header>
-    <nav>
-        <div>
-            <img src="#" alt="logo"/>
-            <a href="index.php?action=home">Accueil</a>
-            <a href="#">Nos livres à l'échange</a>
+<div class="container">
+    <header>
+        <nav>
+            <div class="row pt-3">
+                <div class="col">
+                    <div class="row">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <div class="col-md-2"><img src="../img/home/logo.png" alt="logo"/></div>
+                            <div class="col-md-2"><a href="index.php?action=home">Tom Troc</a></div>
+                            <div class="col-md-2"><a href="index.php?action=home">Accueil</a></div>
+                            <div class="col-md-3"><a href="#">Nos livres à l'échange</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="d-flex justify-content-end">
+                            <?php if (isset($_SESSION['user'])) {?>
+                                <div class="col-md-3"><a href="index.php?action=admin">Mon compte</a></div>
+                                <div class="col-md-3"><a href="#">Messagerie</a></div>
+                                <div class="col-md-3"><a href="index.php?action=disconnectUser">Déconnexion</a></div>
+                            <?php } else { ?>
+                                <div class="col-md-2"><a href="index.php?action=admin">Connexion</a></div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+        <?= $content /* Ici est affiché le contenu réel de la page. */ ?>
+    </main>
+
+    <footer>
+        <div class="row pt-3">
+            <div class="d-flex justify-content-end">
+                <div class="col-md-2"><a href="#">Politique de confidentialité</a></div>
+                <div class="col-md-2 d-flex justify-content-center "><a href="#">Mentions légales</a></div>
+                <div class="col-md-1"><p>Tom Troc©</p></div>
+            </div>
         </div>
-        <div>
-            <a href="#">Messagerie</a>
-            <a href="#">Mon compte</a>
-            <?php
-            if (isset($_SESSION['user'])) {
-                echo '<a href="index.php?action=disconnectUser">Déconnexion</a>';
-            } else {
-                echo '<a href="index.php?action=admin">Connexion</a>';
-            }
-            ?>
+    </footer>
+</div>
 
-        </div>
-    </nav>
-</header>
-
-<main>
-    <?= $content /* Ici est affiché le contenu réel de la page. */ ?>
-</main>
-
-<footer>
-    <a href="#">Politique de confidentialité</a>
-    <a href="#">Mentions légales</a>
-    <p>Tom Troc©</p>
-</footer>
 
 </body>
 </html>
