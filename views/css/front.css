@@ -1,0 +1,68 @@
+body .btn-primary {
+  background-color: #00AC66 !important;
+  border: #00AC66 !important;
+  padding: 15px 25px;
+}
+body a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+body a:hover {
+  border-bottom: 1px solid;
+  background: #00AC66;
+}
+
+header {
+  background: #F5F3EF;
+}
+header .nav {
+  height: 51px;
+}
+header .nav img {
+  background-color: #00AC66;
+  padding: 8px;
+  border-radius: 5px;
+}
+header .nav a {
+  font-size: 17px;
+}
+header .nav .logo {
+  color: #00AC66;
+  font-size: 20px;
+}
+
+#discover, #explanation, #about {
+  background: #F5F3EF;
+}
+
+#discover p {
+  padding: 10px 0 15px 0;
+}
+
+#explanation .stage {
+  background: #ffffff;
+  height: 139px;
+  border-radius: 10px;
+}
+
+#banner {
+  overflow: hidden;
+}
+
+#myAccount {
+  background: #FAF9F7;
+}
+#myAccount .infoUser {
+  background: #ffffff;
+  border-radius: 20px;
+}
+#myAccount .infoUser .userPhoto {
+  width: 50%;
+  border-bottom: #F5F3EF solid 1px;
+}
+#myAccount .infoUser .userPhoto img {
+  height: 135px;
+  width: 135px;
+  border-radius: 100px;
+}

@@ -22,9 +22,17 @@ class AdminController
      */
     public function displayConnectionForm()
     {
-
         $view = new View("Connexion");
-        $view->render("connectionForm");
+
+        if($this->displayErrorMessage()){
+            $view->render("connectionForm", [
+                'error' => 'Les identifiants utilisés sont incorrects'
+            ]);
+        } else {
+            $view->render("connectionForm", [
+                'error' => ''
+            ]);
+        }
     }
 
     /**
@@ -33,7 +41,20 @@ class AdminController
     public function displayCreateUserForm()
     {
         $view = new View("NouvelUtilisateur");
-        $view->render("createUserForm");
+
+        if($this->displayErrorMessage()) {
+            if (isset($_GET['errorPseudo']) || isset($_GET['errorEmail'])) {
+                $view->render("createUserForm", [
+                    'errorPseudo' => $_GET['errorPseudo'],
+                    'errorEmail' => $_GET['errorEmail'],
+                ]);
+            }
+        } else {
+            $view->render("createUserForm", [
+                'errorPseudo' => '',
+                'errorEmail' => '',
+            ]);
+        }
     }
 
     /**
@@ -45,8 +66,6 @@ class AdminController
         $view->render("newPhotoForm");
     }
 
-
-
     /**
      * Connection de l'utilisateur.
      * @return void
@@ -54,26 +73,39 @@ class AdminController
     public function connectUser()
     {
         // On récupère les données du formulaire.
-        $pseudo = Utils::request("pseudo");
-        $password = Utils::request("password");
-
+        $pseudo = htmlspecialchars(Utils::request("pseudo"));
+        $password = htmlspecialchars(Utils::request("password"));
+        
         // On vérifie que l'utilisateur existe.
         $userManager = new UserManager();
         $user = $userManager->getUserByPseudo($pseudo);
-
+        $errorMessage = false;
         // On vérifie si le pseudo est correct
         if (!$user){
-            throw new Exception("Les identifiants utilisées sont incorects");
+//            throw new Exception("Les identifiants utilisées sont incorects");
+            $errorMessage = true;
         }
+
         // On vérifie si le mot de passe est correct
-        if (!password_verify($password, $user->getPassword())) {
-            throw new Exception("Les identifiants utilisées sont incorects");
+        if(!$errorMessage){
+            if (!password_verify($password, $user->getPassword())) {
+//            throw new Exception("Les identifiants utilisées sont incorects");
+                $errorMessage = true;
+            }
         }
 
-        $_SESSION['user'] = $user;
-        $_SESSION['idUser'] = $user->getId();
+        if ($errorMessage){
+            $error = [
+              'errorMessage' => 'error',
+            ];
+            Utils::redirect("connectionForm", $error );
 
-        Utils::redirect("admin");
+        } else {
+            $_SESSION['user'] = $user;
+            $_SESSION['idUser'] = $user->getId();
+
+            Utils::redirect("admin");
+        }
     }
 
     /**
@@ -83,35 +115,40 @@ class AdminController
     public function createUser()
     {
         // On récupère les données du formulaire.
-        $pseudo = Utils::request("pseudo");
-        $password = Utils::request("password");
-        $email = Utils::request("email");
+        $pseudo = htmlspecialchars(Utils::request("pseudo"));
+        $password = htmlspecialchars(Utils::request("password"));
+        $email = htmlspecialchars(Utils::request("email"));
 
-        //vérifier si le pseudo n'existe pas
-        $exist = $this->checkIfUserExist($pseudo, $email);
-        $error_message = "Le pseudo utilisateur $pseudo existe déjà.";
-        // On crée l'objet User.
-        if($exist === 'pseudo'){
-            echo "<script type='text/javascript'>alert('Le pseudo utilisateur $pseudo existe déjà.');</script>";
-            $this->displayCreateUserForm();
-//            throw new Exception("Le pseudo utilisateur $pseudo existe déja");
-        } elseif ($exist === 'email'){
-            echo "<script type='text/javascript'>alert('L\'email utilisateur $email existe déja.');</script>";
-            $this->displayCreateUserForm();
-//            throw new Exception("L'email utilisateur $email existe déja");
+        $pseudoExist = $this->checkIfPseudoExist($pseudo);
+        $emailExist = $this->checkIfEmailExist($email);
+
+        $errorMessage = false;
+
+        if($pseudoExist){
+            $errorMessage = true;
+        }
+        if ($emailExist){
+            $errorMessage = true;
+        }
+
+        if ($errorMessage){
+            $error = [
+                'errorMessage' => 'error',
+                'errorPseudo' => $pseudoExist,
+                'errorEmail' => $emailExist,
+            ];
+            Utils::redirect("createUserForm", $error );
         } else {
             $user = new User([
                 'pseudo' => $pseudo,
                 'password' => password_hash($password, PASSWORD_DEFAULT),
                 'email' => $email,
             ]);
+            $userManager = new UserManager();
+            $userManager->addUser($user);
+
+            $this->displayConnectionForm();
         }
-
-        // add user.
-        $userManager = new UserManager();
-        $userManager->addUser($user);
-
-        $this->displayConnectionForm();
     }
 
     /**
@@ -139,21 +176,42 @@ class AdminController
         }
     }
 
-    private function checkIfUserExist($pseudo, $email)
+    /**
+     * Verifies that the pseudo Exist.
+     * @return void
+     */
+    private function checkIfPseudoExist ($pseudo)
     {
         $userManager = new UserManager();
         $userPseudo = $userManager->getUserByPseudo($pseudo);
-        $userEmail = $userManager->getUserByEmail($email);
 
-       if ($userPseudo){
-           return 'pseudo';
-       } elseif ($userEmail) {
-           return 'email';
-       } else {
-           return true;
-       }
+        if ($userPseudo){
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    /**
+     * Verifies that the email Exist.
+     * @return void
+     */
+    private function checkIfEmailExist ($email)
+    {
+        $userManager = new UserManager();
+        $userEmail = $userManager->getUserByEmail($email);
+
+        if ($userEmail){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Create Array with user info
+     * @return array
+     */
     public function getUserData()
     {
         $userManager = new UserManager();
@@ -171,6 +229,10 @@ class AdminController
         return $user[0];
     }
 
+    /**
+     * Save photo
+     * @return array
+     */
     public function uploadProfilPicture()
     {
         $userManager = new UserManager();
@@ -196,6 +258,10 @@ class AdminController
 
     }
 
+    /**
+     * update profile photo in database
+     * @return string
+     */
     public function updateProfilePicture()
     {
         $userManager = new UserManager();
@@ -213,6 +279,10 @@ class AdminController
         return $profilePictureName;
     }
 
+    /**
+     * Rename Picture
+     * @return string
+     */
     public function renamePicture()
     {
         $userManager = new UserManager();
@@ -224,6 +294,10 @@ class AdminController
         return $newFileName;
     }
 
+    /**
+     * Update info user
+     * @return void
+     */
     public function updateInfoUser()
     {
         $userManager = new UserManager();
@@ -247,5 +321,14 @@ class AdminController
         $userManager->updateInfoUser($user);
 
         $this->showAdmin();
+    }
+
+    public function displayErrorMessage()
+    {
+        if( isset($_GET['errorMessage']) && Utils::protectGet($_GET['errorMessage']) === 'error'){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
