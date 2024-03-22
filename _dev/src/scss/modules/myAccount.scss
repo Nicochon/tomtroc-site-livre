@@ -1,0 +1,16 @@
+#myAccount{
+    background: #FAF9F7;
+    .infoUser{
+        background: #ffffff;
+        border-radius: 20px;
+        .userPhoto{
+            width: 50%;
+            border-bottom: #F5F3EF solid 1px;
+            img{
+                height: 135px;
+                width: 135px;
+                border-radius: 100px;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+body{
+  .btn-primary{
+    background-color: $background-btn-color !important;
+    border: $background-btn-color !important;
+    padding: 15px 25px;
+  }
+  a{
+    outline: none;
+    text-decoration: none;
+    color: black;
+    &:hover {
+      border-bottom: 1px solid;
+      background: $background-btn-color;
+    }
+  }
+}
+
