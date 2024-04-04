@@ -8,11 +8,16 @@ class AdminController
     public function showAdmin() : void
     {
         $this->checkIfUserIsConnected();
+        $bookController = new BookController();
+
+        $booksInfo = $bookController->getBookInfo();
         $userData = $this->getUserData();
+
         if(!empty($userData)){
             $view = new View("Administration");
             $view->render("admin", [
                 'userInfo' => $userData,
+                'booksInfo' => $booksInfo,
             ]);
         }
     }
@@ -20,6 +25,7 @@ class AdminController
     /**
      * Display connection form
      */
+    // a changer le nom
     public function displayConnectionForm()
     {
         $view = new View("Connexion");
@@ -62,6 +68,7 @@ class AdminController
      */
     public function displayUpdatePhotoForm()
     {
+        $this->checkIfUserIsConnected();
         $view = new View("NouvelPhoto");
         $view->render("newPhotoForm");
     }
@@ -217,81 +224,58 @@ class AdminController
         $userManager = new UserManager();
         $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
 
+        $imgManager = new ImgManager();
+
+        $img = $imgManager->getImgByOwnerId($userdata->getIdUser());
+
+        if($img === null){
+            $imgName = false;
+        } else {
+            $imgName = $img->getName();
+        }
+
         $user[] = [
             'pseudo' => $userdata->getPseudo(),
             'email' => $userdata->getEmail(),
             'password' => $userdata->getPassword(),
             'dateUser' => $userdata->getDateUser()->format('d-m-Y'),
             'idUser' => $userdata->getIdUser(),
-            'imgName' => $userdata->getImgName(),
+            'imgName' => $imgName,
         ];
 
         return $user[0];
     }
 
-    /**
-     * Save photo
-     * @return array
-     */
-    public function uploadProfilPicture()
+    public function addUpdateProfilePhoto()
     {
-        $userManager = new UserManager();
-        $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
-
-        $oldFileName =  $userdata->getImgName();
-
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $newFileName = $this->updateProfilePicture();
+            $imgManager = new ImgManager();
+            $userManager = new UserManager();
+            $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
 
-            $extension = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
-            if ($extension === 'png' || $extension === 'jpeg' || $extension === 'jpg'){
-                $destination = ROOT_FS . '/views/img/admin/' . $newFileName;
-                if($oldFileName != ""){
-                    unlink(ROOT_FS . '/views/img/admin/' .$oldFileName);
-                }
-                move_uploaded_file($_FILES["photo"]["tmp_name"], $destination);
-            } else {
-                echo 'Choose only png ';
+            $idUser = $userdata->getIdUser();
+            $type = 'admin';
+
+            $fileExistDb = Utils::checkIfPhotoExistInDb($idUser);
+
+            if (!empty($fileExistDb)) {
+                $imgManager->deleteImg($fileExistDb->getIdImg());
+                unlink(ROOT_FS . '/views/img/' . $type . '/' . $fileExistDb->getName());
             }
+
+            if($imgManager->lastIdInsert() === 1){
+                $newImgId = $imgManager->lastIdInsert();
+            } else {
+                $newImgId = $imgManager->lastIdInsert() + 1;
+            }
+
+            $fileName = $newImgId . '_photoAdmin' . '.' . pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
+            $imgManager->addImg($fileName, $idUser, $type);
+
+            Utils::uploadPicture($type, $fileName);
+
             $this->showAdmin();
         }
-
-    }
-
-    /**
-     * update profile photo in database
-     * @return string
-     */
-    public function updateProfilePicture()
-    {
-        $userManager = new UserManager();
-        $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
-
-        $profilePictureName = $this->renamePicture();
-
-        $user = new User([
-            'idUser' => $userdata->getIdUser(),
-            'imgName' => $profilePictureName
-        ]);
-
-        $userManager->updateProfilePicture($user);
-
-        return $profilePictureName;
-    }
-
-    /**
-     * Rename Picture
-     * @return string
-     */
-    public function renamePicture()
-    {
-        $userManager = new UserManager();
-        $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
-
-        $extension = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
-        $newFileName = 'photo_profil_idUser_' . $userdata->getIdUser() . '.' . $extension;
-
-        return $newFileName;
     }
 
     /**
@@ -319,6 +303,9 @@ class AdminController
         ]);
 
         $userManager->updateInfoUser($user);
+
+        $_SESSION['user'] = $user;
+        $_SESSION['idUser'] = $user->getId();
 
         $this->showAdmin();
     }

@@ -92,4 +92,48 @@ class Utils {
         return $stringFinal;
     }
 
+    public static function uploadPicture($path, $fileName)
+    {
+        $extension = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
+        if ($extension === 'png' || $extension === 'jpeg' || $extension === 'jpg'){
+            $destination = ROOT_FS . '/views/img/' . $path . '/' . $fileName;
+            move_uploaded_file($_FILES["photo"]["tmp_name"], $destination);
+        } else {
+            echo 'Choose other extension';
+        }
+    }
+
+    public static function checkIfPhotoExistInDb($owner_id)
+    {
+        $imgManager = new ImgManager();
+        $fileExist = $imgManager->getImgByOwnerId($owner_id);
+
+        if ($fileExist != null){
+            self::checkIfPhotoExist($owner_id);
+            return $fileExist;
+        } else {
+            $fileExist = [];
+        }
+        return $fileExist;
+    }
+
+    public static function checkIfPhotoExist($owner_id)
+    {
+        $imgManager = new ImgManager();
+        $fileExist = $imgManager->getImgByOwnerId($owner_id);
+
+        if ($fileExist){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function limitContentLenght($data){
+        if(mb_strlen($data > 200)){
+            $last_space_position = mb_strrpos(mb_substr($data, 0, 200), ' ');
+            $data = mb_substr($data, 0, $last_space_position);
+        }
+        return $data;
+    }
 }

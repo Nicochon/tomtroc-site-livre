@@ -60,7 +60,7 @@ class UserManager extends AbstractEntityManager
         ]);
     }
 
-    public function updateProfilePicture(User $user)
+    public function updatePicture(User $user)
     {
         $sql = "UPDATE user SET imgName = :imgName WHERE id = :id";
         $this->db->query($sql, [

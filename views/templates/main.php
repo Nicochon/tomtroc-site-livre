@@ -16,6 +16,7 @@
     <title>TomTroc</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo ROOT_DIR ?>/views/css/front.css"/>
+    <script src="<?php echo ROOT_DIR ?>/views/js/front.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                             <div class="col-md-1"><img src="<?php echo ROOT_DIR ?>/views/img/home/logo.png" alt="logo"/></div>
                             <div class="col-md-3"><a href="index.php?action=home" class="logo">Tom Troc</a></div>
                             <div class="col-md-2"><a href="index.php?action=home">Accueil</a></div>
-                            <div class="col-md-4"><a href="#">Nos livres à l'échange</a></div>
+                            <div class="col-md-4"><a href="index.php?action=displayBook">Nos livres à l'échange</a></div>
                         </div>
                     </div>
                 </div>

@@ -13,4 +13,17 @@
             }
         }
     }
+    .books{
+        thead{
+            height: 75px;
+        }
+        tbody{
+            tr{
+                height: 150px;
+                .delete{
+                    color: red;
+                }
+            }
+        }
+    }
 }

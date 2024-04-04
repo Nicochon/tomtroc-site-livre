@@ -46,12 +46,27 @@ try {
 
         case 'uploadProfilPicture':
             $adminController = new AdminController();
-            $adminController->uploadProfilPicture();
+            $adminController->addUpdateProfilePhoto();
             break;
 
         case 'updateInfoUser':
             $adminController = new AdminController();
             $adminController->updateInfoUser();
+            break;
+
+        case 'addBookForm':
+            $bookController = new BookController();
+            $bookController->displayAddBookForm();
+            break;
+
+        case 'addBook':
+            $bookController = new BookController();
+            $bookController->addBook();
+            break;
+
+        case 'displayBook':
+            $bookController = new BookController();
+            $bookController->showBook();
             break;
     }
 } catch (Exception $e) {

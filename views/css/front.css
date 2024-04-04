@@ -66,3 +66,12 @@ header .nav .logo {
   width: 135px;
   border-radius: 100px;
 }
+#myAccount .books thead {
+  height: 75px;
+}
+#myAccount .books tbody tr {
+  height: 150px;
+}
+#myAccount .books tbody tr .delete {
+  color: red;
+}
