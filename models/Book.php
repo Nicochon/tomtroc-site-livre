@@ -5,23 +5,24 @@
  */
 class Book extends AbstractEntity
 {
-    private int $idBook;
+    private int $id_Book;
     private string $title;
     private string $author;
     private int $owner_Id;
     private string $content;
+    private string $status;
 
     public function __construct( array $data = [] ) {
         parent::__construct( $data );
     }
     public function getIdBook(): int
     {
-        return $this->idBook;
+        return $this->id_Book;
     }
 
-    public function setIdBook(int $idBook): void
+    public function setIdBook(int $id_Book): void
     {
-        $this->idBook = $idBook;
+        $this->id_Book = $id_Book;
     }
 
     public function getTitle(): string
@@ -69,5 +70,15 @@ class Book extends AbstractEntity
     public function setContent(string $content): void
     {
         $this->content = $content;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
     }
 }

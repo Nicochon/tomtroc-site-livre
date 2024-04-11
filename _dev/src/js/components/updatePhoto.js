@@ -11,14 +11,21 @@ class updatePhoto{
     }
 
     async getFormInfo(){
+        let id = this.getParameterByName('id');
+        let urlPost = '';
+        if(id !== null){
+            urlPost = 'index.php?action=updatePhotoForm&key=book&id='+id;
+        } else {
+            urlPost = 'index.php?action=updatePhotoForm&key=profile';
+        }
         try {
-            const response = await fetch('index.php?action=updatePhotoForm');
+            const response = await fetch(urlPost);
             const html = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const form = doc.querySelector('form');
             if (form) {
-                return form.outerHTML; // Convertit le formulaire en HTML
+                return form.outerHTML;
             } else {
                 throw new Error('Le formulaire est introuvable dans le contenu HTML.');
             }
@@ -34,8 +41,17 @@ class updatePhoto{
 
         let data = new FormData();
         data.append('photo', valueInput);
+        let id = this.getParameterByName('id');
+        let urlPost = '';
+
+        if(id !== null){
+            urlPost = 'index.php?action=uploadBookPicture&id='+id;
+        } else {
+            urlPost = 'index.php?action=uploadProfilPicture';
+        }
+
         try {
-            const response =  await fetch('index.php?action=uploadProfilPicture', {
+            const response =  await fetch(urlPost, {
                 method: 'POST',
                 body: data,
             });
@@ -63,6 +79,17 @@ class updatePhoto{
             divElements.innerHTML='';
         }
     }
+
+    getParameterByName(name) {
+        let queryString = window.location.search;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(queryString);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
 }
 
 export default updatePhoto;

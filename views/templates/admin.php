@@ -3,20 +3,21 @@
  * Template pour afficher la page admin de l'utisateur.
  */
 ?>
-
+<div id="popup"></div>
 <div id="myAccount" class="pt-5">
     <h2>Mon compte</h2>
     <div class="info row d-flex justify-content-around pt-5 pb-5 ">
         <div class="infoUser col-md-4 text-center d-flex flex-column align-items-center ">
             <div class="userPhoto pt-5 pb-5">
                 <img id="profilePicture" class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $userInfo['imgName'] ?>" alt="Photo de profil"/>
-                <div class="pt-3"><a id="getFormToLoad" href="index.php?action=updatePhotoForm">Modifier</a></div>
+                <div class="pt-3"><a id="getFormToLoad" href="index.php?action=updatePhotoForm&key=profile">Modifier</a></div>
                 <div id="formToLoad"></div>
             </div>
             <div class="info pt-5">
                 <div><h3><?php echo $userInfo['pseudo'] ?></h3></div>
                 <div>Membre depuis le <?php echo $userInfo['dateUser'] ?></div>
-                <div>nombre de livre: <?php echo count($booksInfo) ?></div>
+                <div><p>Bibiliotheque</p></div>
+                <div><p><?php echo count($booksInfo) ?> livre(s)</p></div>
             </div>
         </div>
         <div class="newInfo infoUser col-md-4 p-5">
@@ -63,8 +64,8 @@
                     <td class="align-middle"><?php echo $bookInfo['author'] ?></td>
                     <td class="align-middle"><?php echo $bookInfo['content'] ?> ...</td>
                     <td class="align-middle"><?php echo $bookInfo['availability'] ?></td>
-                    <td class="align-middle"><a class="edit" href="#">Editer</a></td>
-                    <td class="align-middle"><a class="delete" href="#">Supprimer</a></td>
+                    <td class="align-middle"><a class="edit" href="index.php?action=updateBookForm&id=<?php echo $bookInfo['id']; ?>">Editer</a></td>
+                    <td class="align-middle"><a id="deleteBook" class="delete" href="index.php?action=deleteBookVerification&id=<?php echo $bookInfo['id']; ?>">Supprimer</a></td>
                 </tr>
             <?php } ?>
             </tbody>

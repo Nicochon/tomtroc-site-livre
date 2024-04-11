@@ -69,8 +69,20 @@ class AdminController
     public function displayUpdatePhotoForm()
     {
         $this->checkIfUserIsConnected();
+
+        $idBook = '';
+        
+        if($_GET['key'] === 'book'){
+            $BookManager = new BookManager();
+            $bookData = $BookManager->getBookById($_GET['id']);
+            $idBook = $bookData->getIdBook();
+        }
+
         $view = new View("NouvelPhoto");
-        $view->render("newPhotoForm");
+        $view->render("newPhotoForm", [
+            'type' => $_GET['key'],
+            'idBook' => $idBook,
+        ]);
     }
 
     /**
@@ -258,15 +270,15 @@ class AdminController
 
             $fileExistDb = Utils::checkIfPhotoExistInDb($idUser);
 
-            if (!empty($fileExistDb)) {
-                $imgManager->deleteImg($fileExistDb->getIdImg());
-                unlink(ROOT_FS . '/views/img/' . $type . '/' . $fileExistDb->getName());
-            }
-
             if($imgManager->lastIdInsert() === 1){
                 $newImgId = $imgManager->lastIdInsert();
             } else {
                 $newImgId = $imgManager->lastIdInsert() + 1;
+            }
+
+            if (!empty($fileExistDb)) {
+                $imgManager->deleteImg($fileExistDb->getIdImg());
+                unlink(ROOT_FS . '/views/img/' . $type . '/' . $fileExistDb->getName());
             }
 
             $fileName = $newImgId . '_photoAdmin' . '.' . pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);

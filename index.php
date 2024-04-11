@@ -43,6 +43,7 @@ try {
         case 'updatePhotoForm':
             $adminController = new AdminController();
             $adminController->displayUpdatePhotoForm();
+            break;
 
         case 'uploadProfilPicture':
             $adminController = new AdminController();
@@ -59,9 +60,34 @@ try {
             $bookController->displayAddBookForm();
             break;
 
+        case 'updateBookForm':
+            $bookController = new BookController();
+            $bookController->displayUpdateBookForm();
+            break;
+
+        case 'uploadBookPicture':
+            $adminController = new BookController();
+            $adminController->addUpdateBookPhoto();
+            break;
+
         case 'addBook':
             $bookController = new BookController();
             $bookController->addBook();
+            break;
+
+        case 'updateBook':
+            $bookController = new BookController();
+            $bookController->updateBook();
+        break;
+
+        case 'deleteBookVerification':
+            $bookController = new BookController();
+            $bookController->displayDeleteBookVerification();
+        break;
+
+        case 'deleteBook':
+            $bookController = new BookController();
+            $bookController->deleteBook();
             break;
 
         case 'displayBook':
