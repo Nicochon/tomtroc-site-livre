@@ -2,19 +2,30 @@
 
 class BookController
 {
+    /**
+     * Display book page
+     */
     public function showBook()
     {
         $view = new View("Book");
-//        $view->render("book");
+        $view->render("book");
     }
 
-    public function displayAddBookForm()
+    /**
+     * Display form for add book.
+     */
+    public function displayAddBookForm($message=null)
     {
         $view = new View("AddBookForm");
-        $view->render("addBookForm");
+        $view->render("addBookForm",[
+            'message' => $message
+            ]);
     }
 
-    public function displayUpdateBookForm()
+    /**
+     * Display form for update book.
+     */
+    public function displayUpdateBookForm($message=null)
     {
         $bookManager = new BookManager;
         $imgManager = new ImgManager();
@@ -36,10 +47,14 @@ class BookController
         $view = new View("updateBookForm");
         $view->render("updateBookForm",[
             'bookInfo' => $book,
-            'img' => $img
+            'img' => $img,
+            'message' => $message
         ]);
     }
 
+    /**
+     * Show book deletion check.
+     */
     public function displayDeleteBookVerification(){
         $id_book = Utils::protectGet($_GET['id']);
 
@@ -47,8 +62,12 @@ class BookController
         $view->render("deleteBook",[
             'id_book' => $id_book,
         ]);
+
     }
 
+    /**
+     * Add a book.
+     */
     public function addBook()
     {
         $title = htmlspecialchars(Utils::request("title"));
@@ -62,8 +81,14 @@ class BookController
 
         $this->addImgBook($owner_Id);
 
+        $message = 'Votre livre a bien été ajouté.';
+
+        $this->displayAddBookForm($message);
     }
 
+    /**
+     * Add a picture book.
+     */
     public function addImgBook($owner_Id)
     {
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -71,10 +96,9 @@ class BookController
             $imgManager = new ImgManager();
             $allBookOwner = $bookManager->getBooksByOwner($owner_Id);
 
-            $lastBook = end($allBookOwner);
             $type = 'book';
 
-            $fileExist = Utils::checkIfPhotoExist($lastBook['id_Book']);
+            $fileExist = Utils::checkIfPhotoExist($allBookOwner[0]['id_Book']);
 
             if (!empty($fileExist)) {
                 $oldFileName = $fileExist[0]['name'];
@@ -89,15 +113,16 @@ class BookController
             }
 
             $newFileName = $newImgId . '_photoBook' . '.' . pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
-            $imgManager->addImg($newFileName, $lastBook['id_Book'], $type);
+            $imgManager->addImg($newFileName, $allBookOwner[0]['id_Book'], $type);
 
             Utils::uploadPicture($type, $newFileName);
-
-            $this->displayAddBookForm();
         }
     }
 
-    public function addUpdateBookPhoto()
+    /**
+     * Update book photo.
+     */
+    public function updateBookPhoto()
     {
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $imgManager = new ImgManager();
@@ -129,6 +154,9 @@ class BookController
         }
     }
 
+    /**
+     * Get book info.
+     */
     public function getBookInfo()
     {
         $userManager = new UserManager();
@@ -155,6 +183,9 @@ class BookController
         return $allBooksOwner;
     }
 
+    /**
+     * Update Book
+     */
     public function updateBook()
     {
         $title = htmlspecialchars(Utils::request("title"));
@@ -166,14 +197,32 @@ class BookController
         $bookManager = new BookManager();
         $bookManager->updateBook($id_Book, $title, $author, $description, $availability);
 
-        $this->displayUpdateBookForm();
+        $successMessage = 'Votre livre a bien été mis a jour';
+
+        $this->displayUpdateBookForm($successMessage);
     }
 
+    /**
+     * Delete book
+     */
     public function deleteBook()
     {
         $id_Book = Utils::protectGet($_GET['id']);
+
+        $type = 'book';
+
+        $fileExist = Utils::checkIfPhotoExist($id_Book);
+
+        if (!empty($fileExist)) {
+            $oldFileName = $fileExist->getName();
+            unlink(ROOT_FS . '/views/img/' . $type . '/' . $oldFileName);
+        }
+        
         $bookManager = new BookManager();
         $bookManager->deleteBook($id_Book);
+
+        $imgManager = new ImgManager();
+        $imgManager->deleteImgByOwner($id_Book);
 
         $adminController = new AdminController();
         $adminController->showAdmin();

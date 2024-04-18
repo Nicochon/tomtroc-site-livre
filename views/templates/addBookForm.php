@@ -3,7 +3,12 @@
  * Template pour afficher le formulaire de connexion.
  */
 ?>
-<div id="addBook">
+<div id="addBook" class="pt-4">
+    <?php if ($message !== null){ ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo $message; ?>
+        </div>
+    <?php } ?>
     <div class="row p-5">
         <div class="connection-form col-md-4 d-flex flex-column justify-content-center ">
             <form action="index.php?action=addBook" method="post" class="foldedCorner" enctype="multipart/form-data">

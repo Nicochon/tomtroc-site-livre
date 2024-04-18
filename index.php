@@ -67,7 +67,7 @@ try {
 
         case 'uploadBookPicture':
             $adminController = new BookController();
-            $adminController->addUpdateBookPhoto();
+            $adminController->updateBookPhoto();
             break;
 
         case 'addBook':

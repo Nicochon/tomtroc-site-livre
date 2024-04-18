@@ -11,6 +11,7 @@ class ImgManager extends AbstractEntityManager
         $sql = "SELECT * FROM img WHERE owner_Id = :owner_Id";
         $result = $this->db->query($sql, ['owner_Id' => $owner_Id]);
         $img = $result->fetch();
+
         if (!empty($img)) {
             return new Img($img);
         }
@@ -44,5 +45,11 @@ class ImgManager extends AbstractEntityManager
         } else {
             return $img['idMax'];
         }
+    }
+
+    public function deleteImgByOwner(int $owner_Id)
+    {
+        $sql = "DELETE FROM img WHERE owner_Id = :owner_Id";
+        $this->db->query($sql, ['owner_Id' => $owner_Id]);
     }
 }

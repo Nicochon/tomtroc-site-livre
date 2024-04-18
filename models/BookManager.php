@@ -6,7 +6,10 @@
 
 class bookManager extends AbstractEntityManager
 {
-    public function getAllBook()
+    /**
+     * Get all books
+     */
+    public function getAllBooks()
     {
         $sql = "SELECT * FROM book";
         $result = $this->db->query($sql);
@@ -15,8 +18,13 @@ class bookManager extends AbstractEntityManager
         while ($book = $result->fetch()) {
             $books[] = new Book($book);
         }
+
         return $books;
     }
+
+    /**
+     * Get book by id
+     */
     public function getBookById(int $id) : ?Book
     {
         $sql = "SELECT * FROM book WHERE id_book = :id_book";
@@ -27,12 +35,16 @@ class bookManager extends AbstractEntityManager
         if ($bookId) {
             return new Book($bookId);
         }
+
         return null;
     }
 
+    /**
+     * get books by owner
+     */
     public function getBooksByOwner(int $owner_Id)
     {
-        $sql = "SELECT * FROM book WHERE owner_Id = :owner_Id";
+        $sql = "SELECT * FROM book WHERE owner_Id = :owner_Id order by date desc ";
         $result = $this->db->query($sql, ['owner_Id' => $owner_Id]);
 
         $book = $result->fetchAll();
@@ -40,11 +52,13 @@ class bookManager extends AbstractEntityManager
 
             return $book;
         }
+
         return null;
     }
 
-
-
+    /**
+     * Get last books
+     */
     public function getLastBooks()
     {
         $sql = "SELECT * FROM book ORDER BY date DESC LIMIT 5";
@@ -55,9 +69,13 @@ class bookManager extends AbstractEntityManager
         while ($book = $result->fetch()) {
             $books[] = new Book($book);
         }
+
         return $books;
     }
 
+    /**
+     * Add book
+     */
     public function addBook($title, $author, $owner_Id, $content, $availability)
     {
         $sql = "INSERT INTO book (title, author, owner_Id, content, date, status) VALUES (:title, :author, :owner_Id, :content, NOW(), :status)";
@@ -70,6 +88,9 @@ class bookManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Update book
+     */
     public function updateBook($id_Book, $title, $author, $content, $availability)
     {
         $sql = "UPDATE book SET title = :title, author = :author, content = :content, status = :status WHERE id_book = :id_book";
@@ -82,8 +103,10 @@ class bookManager extends AbstractEntityManager
         ]);
     }
 
-
-    public function updatePicture(Book $book)
+    /**
+     * Update picture book
+     */
+    public function updatePictureBook(Book $book)
     {
         $sql = "UPDATE user SET imgName = :imgName WHERE id = :id";
         $this->db->query($sql, [
@@ -92,6 +115,9 @@ class bookManager extends AbstractEntityManager
         ]);
     }
 
+    /**
+     * Delete book
+     */
     public function deleteBook($id_book)
     {
         $sql = "DELETE FROM book WHERE id_book = :id_book";

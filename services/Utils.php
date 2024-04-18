@@ -123,14 +123,14 @@ class Utils {
         $fileExist = $imgManager->getImgByOwnerId($owner_id);
 
         if ($fileExist){
-            return true;
+            return $fileExist;
         } else {
             return false;
         }
     }
 
     public static function limitContentLenght($data){
-        if(mb_strlen($data > 200)){
+        if(mb_strlen($data) > 200){
             $last_space_position = mb_strrpos(mb_substr($data, 0, 200), ' ');
             $data = mb_substr($data, 0, $last_space_position);
         }

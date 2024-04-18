@@ -1,4 +1,9 @@
-<div id="addBook">
+<div id="addBook" class="pt-4">
+    <?php if ($message !== null){ ?>
+        <div class="alert alert-success" role="alert">
+                <?php echo $message; ?>
+        </div>
+    <?php } ?>
     <div class="row p-5">
         <div class="col-md-6">
                 <img id="profilePicture" class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $img['name'] ?>" alt="couverture du livre"/>
