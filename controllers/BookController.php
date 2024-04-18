@@ -12,6 +12,18 @@ class BookController
     }
 
     /**
+     * Display all books.
+     */
+    public function displayAllBooks()
+    {
+        $dataBooks = $this->getAllBooksInformation();
+        $view = new View("AllBooks");
+        $view->render("allBooks",[
+            'dataBooks' => $dataBooks,
+        ]);
+    }
+
+    /**
      * Display form for add book.
      */
     public function displayAddBookForm($message=null)
@@ -226,5 +238,34 @@ class BookController
 
         $adminController = new AdminController();
         $adminController->showAdmin();
+    }
+
+    /**
+     * Get all books information
+     */
+    public function getAllBooksInformation()
+    {
+        $bookManager = new BookManager();
+        $books = [];
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $search = htmlspecialchars(Utils::request('search'));
+            $booksData = $bookManager->getBookByName($search);
+        } else {
+            $booksData = $bookManager->getAllBooks();
+        }
+
+        $userManger = new UserManager();
+        $imgManager = new ImgManager();
+
+        foreach ($booksData as $bookData){
+            $books[] = [
+                'title' => $bookData->getTitle(),
+                'author' => $bookData->getAuthor(),
+                'owner' => $userManger->getUserById($bookData->getOwnerId())->getPseudo(),
+                'imgName' => $imgManager->getImgByOwnerId($bookData->getIdBook())->getName(),
+            ];
+        }
+
+        return $books;
     }
 }

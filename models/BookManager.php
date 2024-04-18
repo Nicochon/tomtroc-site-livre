@@ -61,7 +61,7 @@ class bookManager extends AbstractEntityManager
      */
     public function getLastBooks()
     {
-        $sql = "SELECT * FROM book ORDER BY date DESC LIMIT 5";
+        $sql = "SELECT * FROM book ORDER BY date DESC LIMIT 4";
         $result = $this->db->query($sql);
 
         $books = [];
@@ -124,6 +124,23 @@ class bookManager extends AbstractEntityManager
         $this->db->query($sql, [
             'id_book' => $id_book,
         ]);
+    }
+
+    public function getBookByName (string $search)
+    {
+        $sql = "SELECT * FROM book WHERE title LIKE :search";
+        $result = $this->db->query($sql, [
+            'search' => '%' . $search . '%',
+        ]);
+        $books = [];
+        $dataBooks = $result->fetchAll();
+
+        if(!empty($dataBooks)){
+            foreach ($dataBooks as $dataBook){
+                $books[] = new Book($dataBook);
+            }
+        }
+        return $books;
     }
 
 

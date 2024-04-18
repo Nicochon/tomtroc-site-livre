@@ -94,6 +94,12 @@ try {
             $bookController = new BookController();
             $bookController->showBook();
             break;
+
+        case 'displayAllBooks':
+            $bookController = new BookController();
+            $bookController->displayAllBooks();
+            break;
+
     }
 } catch (Exception $e) {
     // En cas d'erreur, on affiche la page d'erreur.

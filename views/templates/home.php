@@ -19,17 +19,27 @@
             </div>
         </div>
     </div>
-    <div id="lastBook" class="p-5">
-        <div class="d-flex flex-column align-items-center">
+    <div id="lastBook" class="pt-5 pb-5">
+        <div class="text-center">
             <h2>Les derniers livres ajoutés</h2>
-
-            <div>
-                <!--            ici on utilise la base de donnée pour afficher les dernier livres-->
-            </div>
-            <div><a class="btn btn-primary" href="#">Voir tous les livres</a></div>
+        </div>
+        <div class="row">
+            <?php if(!empty($books)){
+                foreach ($books as $book){?>
+                    <div class="col-md-3 p-5">
+                        <div><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $book['imgName'] ?>" alt="couverture du livre: <?php echo $book['title']?>"/></div>
+                        <div><p><?php echo $book['title'] ?></p></div>
+                        <div><p><?php echo $book['author'] ?></p></div>
+                        <div><p>Vendu par: <?php echo $book['owner'] ?></p></div>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-primary" href="index.php?action=displayAllBooks">Voir tous les livres</a>
         </div>
     </div>
-    <div id="explanation" class="p-5">
+    <div id="explanation" class="pt-5">
         <div class="d-flex flex-column align-items-center">
             <h3>Comment ça marche ?</h3>
             <p>Echanger des livres avec TomTroc c'est simple et amusant ! suivez ces étapes pour commencer:</p>

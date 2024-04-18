@@ -19,15 +19,17 @@ class HomeController
     {
         $userManger = new UserManager();
         $bookManager = new BookManager();
-        $booksData = $bookManager->getLastBooks();
+        $imgManager = new ImgManager();
 
+        $booksData = $bookManager->getLastBooks();
         $books = [];
 
         foreach ($booksData as $bookData){
             $books[] = [
                 'title' => $bookData->getTitle(),
                 'author' => $bookData->getAuthor(),
-                'owner' => $userManger->getUserById($bookData->getOwnerId()),
+                'owner' => $userManger->getUserById($bookData->getOwnerId())->getPseudo(),
+                'imgName' => $imgManager->getImgByOwnerId($bookData->getIdBook())->getName(),
             ];
         }
 
