@@ -24,10 +24,11 @@ class AdminController
 
     public function showPublicProfile()
     {
-        $userData = $this->getUserData(Utils::protectGet($_GET['id']));
+        $idUser = (int)Utils::protectGet($_GET['id']);
+        $userData = $this->getUserData($idUser);
 
         $bookController = new BookController();
-        $booksInfo = $bookController->getBookInfo(Utils::protectGet($_GET['id']));
+        $booksInfo = $bookController->getBookInfo($idUser);
 
         $view = new View("PublicProfile");
         $view->render("publicProfile", [
@@ -201,7 +202,7 @@ class AdminController
      * Verifies that the user is logged in.
      * @return void
      */
-    private function checkIfUserIsConnected() : void
+    public function checkIfUserIsConnected() : void
     {
         // On vérifie que l'utilisateur est connecté.
         if (!isset($_SESSION['user'])) {

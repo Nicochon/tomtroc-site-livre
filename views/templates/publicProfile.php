@@ -7,6 +7,7 @@
                 <div>Membre depuis le <?php echo $userInfo['dateUser'] ?></div>
                 <div><p>Bibiliotheque</p></div>
                 <div><p><?php echo count($booksInfo) ?> livre(s)</p></div>
+                <a class="btn btn-primary" href="index.php?action=displayMessage&idUser=<?php echo $userInfo['idUser'] ?>">contacter</a>
             </div>
         </div>
         <div class="col-md-8">

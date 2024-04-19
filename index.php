@@ -105,6 +105,10 @@ try {
             $bookController->displayAllBooks();
             break;
 
+        case 'displayMessage':
+            $messageController = new MessageController();
+            $messageController->displayMessage();
+
 
     }
 } catch (Exception $e) {
