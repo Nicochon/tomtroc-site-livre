@@ -22,6 +22,20 @@ class AdminController
         }
     }
 
+    public function showPublicProfile()
+    {
+        $userData = $this->getUserData(Utils::protectGet($_GET['id']));
+
+        $bookController = new BookController();
+        $booksInfo = $bookController->getBookInfo(Utils::protectGet($_GET['id']));
+
+        $view = new View("PublicProfile");
+        $view->render("publicProfile", [
+            'userInfo' => $userData,
+            'booksInfo' => $booksInfo,
+        ]);
+    }
+
     /**
      * Display connection form
      */
@@ -231,10 +245,15 @@ class AdminController
      * Create Array with user info
      * @return array
      */
-    public function getUserData()
+    public function getUserData($idUser=null)
     {
         $userManager = new UserManager();
-        $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
+
+        if($idUser === null){
+            $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
+        } else {
+            $userdata = $userManager->getUserById($idUser);
+        }
 
         $imgManager = new ImgManager();
 

@@ -15,7 +15,7 @@
         <?php if (!empty($dataBooks)){?>
             <?php foreach ($dataBooks as $dataBook){?>
                 <div class="col-md-3 p-5">
-                    <a href="#">
+                    <a href="index.php?action=displayBook&idBook=<?php echo $dataBook['idBook'] ?>">
                         <div><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $dataBook['imgName'] ?>" alt="couverture du livre: <?php echo $dataBook['title']?>"/></div>
                         <div><p><?php echo $dataBook['title'] ?></p></div>
                         <div><p><?php echo $dataBook['author'] ?></p></div>

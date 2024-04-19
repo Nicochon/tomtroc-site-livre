@@ -7,9 +7,23 @@ class BookController
      */
     public function showBook()
     {
-        $view = new View("Book");
-        $view->render("book");
+        $bookManager = new BookManager;
+        $idBook = (int)Utils::protectGet($_GET['idBook']);
+        $bookData = $bookManager->getBookById($idBook);
+
+        $imgManager = new ImgManager();
+        $userPhoto = $imgManager->getImgByOwnerId($idBook)->getName();
+
+        $ownerData = $this->getOwnerInfo($bookData->getOwnerId());
+
+        $view = new View("BookPage");
+        $view->render("bookPage",[
+            'dataBook' => $bookData,
+            'dataUser' => $ownerData,
+            'userPhoto' => $userPhoto
+        ]);
     }
+
 
     /**
      * Display all books.
@@ -169,10 +183,16 @@ class BookController
     /**
      * Get book info.
      */
-    public function getBookInfo()
+    public function getBookInfo($idOwner=null)
     {
         $userManager = new UserManager();
-        $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
+
+        if($idOwner === null){
+            $userdata = $userManager->getUserByPseudo($_SESSION['user']->getPseudo());
+        } else {
+            $userdata = $userManager->getUserById($idOwner);
+        }
+
 
         $bookManager = new BookManager;
         $allData = $bookManager->getBooksByOwner($userdata->getIdUser());
@@ -259,6 +279,7 @@ class BookController
 
         foreach ($booksData as $bookData){
             $books[] = [
+                'idBook' => $bookData->getIdBook(),
                 'title' => $bookData->getTitle(),
                 'author' => $bookData->getAuthor(),
                 'owner' => $userManger->getUserById($bookData->getOwnerId())->getPseudo(),
@@ -268,4 +289,23 @@ class BookController
 
         return $books;
     }
+
+    public function getOwnerInfo($idOwner)
+    {
+        $userManager = new UserManager();
+        $userInfo = $userManager->getUserById($idOwner);
+
+        $imgManager = new ImgManager();
+        $userPhoto = $imgManager->getImgByOwnerId($userInfo->getIdUser());
+        
+        $userData = [
+            'id' => $userInfo->getIdUser(),
+            'pseudo' => $userInfo->getPseudo(),
+            'photo' => $userPhoto->getName(),
+            'dateUser' => $userInfo->getDateUser()->format('d-m-Y'),
+        ];
+
+        return $userData;
+    }
+
 }

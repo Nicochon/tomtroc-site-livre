@@ -30,7 +30,7 @@
                             <div class="col-md-1"><img src="<?php echo ROOT_DIR ?>/views/img/home/logo.png" alt="logo"/></div>
                             <div class="col-md-3"><a href="index.php?action=home" class="logo">Tom Troc</a></div>
                             <div class="col-md-2"><a href="index.php?action=home">Accueil</a></div>
-                            <div class="col-md-4"><a href="index.php?action=displayBook">Nos livres à l'échange</a></div>
+                            <div class="col-md-4"><a href="index.php?action=displayAllBooks">Nos livres à l'échange</a></div>
                         </div>
                     </div>
                 </div>

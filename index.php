@@ -55,6 +55,11 @@ try {
             $adminController->updateInfoUser();
             break;
 
+        case 'displayPublicProfile':
+            $adminController = new AdminController();
+            $adminController->showPublicProfile();
+            break;
+
         case 'addBookForm':
             $bookController = new BookController();
             $bookController->displayAddBookForm();
@@ -99,6 +104,7 @@ try {
             $bookController = new BookController();
             $bookController->displayAllBooks();
             break;
+
 
     }
 } catch (Exception $e) {
