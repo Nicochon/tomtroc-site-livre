@@ -24,7 +24,6 @@ class BookController
         ]);
     }
 
-
     /**
      * Display all books.
      */
