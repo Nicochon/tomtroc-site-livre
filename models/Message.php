@@ -8,7 +8,7 @@ class message extends AbstractEntity
     private int $id_message;
     private string $content;
     private int $id_owner;
-    private ?DateTime $date;
+    private string $date;
 
     public function getIdMessage(): int
     {
@@ -40,12 +40,12 @@ class message extends AbstractEntity
         $this->id_owner = $id_owner;
     }
 
-    public function getDate(): ?DateTime
+    public function getDate(): string
     {
         return $this->date;
     }
 
-    public function setDate(?DateTime $date): void
+    public function setDate(string $date): void
     {
         $this->date = $date;
     }

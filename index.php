@@ -108,6 +108,16 @@ try {
         case 'displayMessage':
             $messageController = new MessageController();
             $messageController->displayMessage();
+            break;
+
+        case 'displayConversation':
+            $messageController = new MessageController();
+            $messageController->displayConversation();
+            break;
+
+        case 'postNewMessage':
+            $messageController = new MessageController();
+            $messageController->postMessage();
 
 
     }

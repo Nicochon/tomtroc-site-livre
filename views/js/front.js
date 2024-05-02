@@ -147,24 +147,53 @@
       }
     }
 
+    class messages {
+      constructor() {}
+      async getConversationInfo(url) {
+        try {
+          const response = await fetch(url);
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const div = doc.getElementById('newConversation');
+          if (div) {
+            return div.outerHTML;
+          } else {
+            throw new Error('Le formulaire est introuvable dans le contenu HTML.');
+          }
+        } catch (err) {
+          console.warn('Something went wrong.', err);
+          throw err; // Rethrow the error to propagate it further
+        }
+      }
+      clearDiv() {
+        let divElements = document.getElementById('conversation');
+        if (divElements) {
+          divElements.innerHTML = '';
+        }
+      }
+    }
+
     window.addEventListener("load", event => {
       //gestion photo update
       const photoUpdate = new updatePhoto();
       let link = document.getElementById('getFormToLoad');
       let divForm = document.getElementById('formToLoad');
       let img = document.getElementById('profilePicture');
-      link.addEventListener('click', async function (e) {
-        e.preventDefault();
-        let html = await photoUpdate.getFormInfo();
-        divForm.innerHTML = html;
-        let btnSubmit = document.getElementById('btnSubmitAdmin');
-        btnSubmit.addEventListener('click', async function (e) {
+      if (link !== null) {
+        link.addEventListener('click', async function (e) {
           e.preventDefault();
-          let src = await photoUpdate.postFormPhoto();
-          img.src = src;
-          photoUpdate.clearDiv();
+          let html = await photoUpdate.getFormInfo();
+          divForm.innerHTML = html;
+          let btnSubmit = document.getElementById('btnSubmitAdmin');
+          btnSubmit.addEventListener('click', async function (e) {
+            e.preventDefault();
+            let src = await photoUpdate.postFormPhoto();
+            img.src = src;
+            photoUpdate.clearDiv();
+          });
         });
-      });
+      }
 
       //gestion popup confirmDelete
       const verificationPopup = new popupVerification();
@@ -189,6 +218,20 @@
             e.preventDefault();
             verificationPopup.displayPopup(popupDiv, false);
           });
+        });
+      });
+
+      //gestion de la messagerie
+      const conversation = new messages();
+      let displayConversation = document.querySelectorAll('#displayConversation');
+      let div = document.getElementById('conversation');
+      displayConversation.forEach(function (displayConversation) {
+        displayConversation.addEventListener('click', async function (e) {
+          e.preventDefault();
+          let url = displayConversation.getAttribute('href');
+          let htmlConversation = await conversation.getConversationInfo(url);
+          conversation.clearDiv();
+          div.innerHTML = htmlConversation;
         });
       });
     });

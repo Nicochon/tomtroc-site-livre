@@ -1,5 +1,6 @@
 import updatePhoto from "./components/updatePhoto";
 import popupVerifcation from "./components/popupVerification";
+import messages from "./components/messages";
 
 window.addEventListener("load", (event) => {
 
@@ -10,20 +11,23 @@ window.addEventListener("load", (event) => {
     let divForm =  document.getElementById('formToLoad');
     let img = document.getElementById('profilePicture')
 
-    link.addEventListener('click', async function(e) {
-        e.preventDefault();
-        let html = await photoUpdate.getFormInfo();
-
-        divForm.innerHTML = html;
-        let btnSubmit = document.getElementById('btnSubmitAdmin');
-
-        btnSubmit.addEventListener('click', async function(e) {
+    if(link !== null){
+        link.addEventListener('click', async function(e) {
             e.preventDefault();
-            let src = await photoUpdate.postFormPhoto();
-            img.src = src;
-            photoUpdate.clearDiv();
+            let html = await photoUpdate.getFormInfo();
+
+            divForm.innerHTML = html;
+            let btnSubmit = document.getElementById('btnSubmitAdmin');
+
+            btnSubmit.addEventListener('click', async function(e) {
+                e.preventDefault();
+                let src = await photoUpdate.postFormPhoto();
+                img.src = src;
+                photoUpdate.clearDiv();
+            })
         })
-    })
+    }
+
 
 //gestion popup confirmDelete
     const verificationPopup = new popupVerifcation;
@@ -56,4 +60,21 @@ window.addEventListener("load", (event) => {
             });
         })
     });
+
+//gestion de la messagerie
+    const conversation = new messages;
+
+    let displayConversation = document.querySelectorAll('#displayConversation');
+    let div = document.getElementById('conversation')
+
+    displayConversation.forEach(function (displayConversation){
+        displayConversation.addEventListener('click', async function (e){
+            e.preventDefault();
+            let url = displayConversation.getAttribute('href');
+            let htmlConversation = await conversation.getConversationInfo(url);
+            conversation.clearDiv();
+            div.innerHTML = htmlConversation;
+        });
+    });
+
 });

@@ -39,7 +39,7 @@
                         <div class="d-flex justify-content-end align-items-center">
                             <?php if (isset($_SESSION['user'])) {?>
                                 <div class="col-md-3"><a href="index.php?action=admin">Mon compte</a></div>
-                                <div class="col-md-3"><a href="#">Messagerie</a></div>
+                                <div class="col-md-3"><a href="index.php?action=displayMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>">Messagerie</a></div>
                                 <div class="col-md-3"><a href="index.php?action=disconnectUser">Déconnexion</a></div>
                             <?php } else { ?>
                                 <div class="col-md-2"><a href="index.php?action=admin">Connexion</a></div>

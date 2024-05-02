@@ -129,6 +129,17 @@ class Utils {
         }
     }
 
+    public static function checkIfConversationExist($id_sender, $id_recipient)
+    {
+        $conversationManager = new ConversationManager();
+        $conversation = $conversationManager->getConversationByUsers($id_sender, $id_recipient);
+        if($conversation){
+            return $conversation['id_conversation'];
+        } else {
+            return false;
+        }
+    }
+
     public static function limitContentLenght($data){
         if(mb_strlen($data) > 200){
             $last_space_position = mb_strrpos(mb_substr($data, 0, 200), ' ');
