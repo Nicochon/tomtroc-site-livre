@@ -1,56 +1,88 @@
-<div id="chat">
-    <div class="row">
-        <div class="col-md-4">
-            <h1>Messagerie</h1>
-            <?php foreach ($conversations as $conversation){ ?>
-                <a id="displayConversation" href="index.php?action=displayConversation&idConversation=<?php echo $conversation['id_conversation'] ?>&idContact=<?php echo $conversation['id_user'] ?>">
-                    <div class="row">
-
-                        <div class="col-md-4">
-                            <img id="profilePicture" class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $conversation['img'] ?>" alt="Photo de profil"/>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <p><?php echo $conversation['name']; ?></p>
+<div class="container">
+    <div id="chat">
+        <div class="row">
+            <div class="col-md-3 messaging pt-5">
+                <h1>Messagerie</h1>
+                <?php foreach ($conversations as $conversation){ ?>
+                    <a id="displayConversation" href="index.php?action=displayConversation&idConversation=<?php echo $conversation['id_conversation'] ?>&idContact=<?php echo $conversation['id_user'] ?>">
+                        <div class="row pt-3">
+                            <div class="col-md-3 text-center">
+                                <img class="messagingPicture" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $conversation['img'] ?>" alt="Photo de profil"/>
+                            </div>
+                            <div class="col-md-9 d-flex justify-content-center flex-column">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p><strong><?php echo $conversation['name']; ?></strong></p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <span><?php echo $conversation['conversations'][0]->getDate()?></span>
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <p>date</p>
+                                <div class="row">
+                                    <p><?php echo $conversation['conversations'][0]->getContent()?></p>
                                 </div>
                             </div>
-                            <p><?php echo $conversation['conversations'][0]->getContent()?></p>
                         </div>
-                    </div>
-                </a>
-            <?php } ?>
-        </div>
-        <div class="col-md-8">
-            <div id="conversation">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $conversations[0]['img'] ?>"/>
-                    </div>
-                    <div class="col-md-3">
-                        <p><?php echo $conversations[0]['name'] ?></p>
-                    </div>
-                </div>
-                <?php foreach (array_reverse ($conversations[0]['conversations']) as $content){
-                    if($content->getIdOwner() === $_SESSION['user']->getId()){ ?>
-                        <div class="d-flex justify-content-end">
-                            <p class="text-right"><?php echo $content->getContent(); ?></p>
-                        </div>
-                    <?php } else { ?>
-                        <div>
-                            <p><?php echo $content->getContent(); ?></p>
-                        </div>
-                    <?php } ?>
+                    </a>
                 <?php } ?>
-                <form action="index.php?action=postNewMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>&idRecipient=<?php echo $conversations[0]['id_user']; ?>" method="post" class="foldedCorner" enctype="multipart/form-data">
-                    <div class="input-group">
-                        <button type="submit" name="submit" class="btn btn-outline-secondary">Envoyer</button>
-                        <input type="text" class="form-control" name="message" id="message">
-                    </div>
-                </form>
+            </div>
+            <div id="conversation" class="col-md-9 pt-3 pb-5">
+                <div>
+                    <?php if(empty ($newConversations)){ ?>
+                        <div class="row dataMessage">
+                            <div class="col-md-1 text-center d-flex align-items-center">
+                                <img class="messagingPicture" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $conversations[0]['img'] ?>"/>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-center">
+                                <p><strong><?php echo $conversations[0]['name'] ?></strong></p>
+                            </div>
+                        </div>
+                        <div class="scrollBar">
+                            <?php foreach (array_reverse ($conversations[0]['conversations']) as $content){
+                                if($content->getIdOwner() === $_SESSION['user']->getId()){ ?>
+                                    <div class="message d-flex align-items-end flex-column">
+                                        <span><?php echo $content->getDate(); ?></span>
+                                        <div class="d-flex align-items-end myMessage flex-column">
+                                            <p class="text-right"><?php echo $content->getContent(); ?></p>
+                                        </div>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="message d-flex align-items-start flex-column">
+                                        <span><?php echo $content->getDate(); ?></span>
+                                        <div class="yourMessage">
+                                            <p><?php echo $content->getContent(); ?></p>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                        <form class="row g-3 d-flex justify-content-center pt-5" action="index.php?action=postNewMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>&idRecipient=<?php echo $conversations[0]['id_user']; ?>" method="post" class="foldedCorner" enctype="multipart/form-data">
+                            <div class="col-md-10 d-flex align-items-center">
+                                <input type="text" class="form-control" name="message" id="message">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                <button type="submit" name="submit" class="btn btn-primary mb-3">Envoyer</button>
+                            </div>
+                        </form>
+                    <?php } else { ?>
+                        <div class="row">
+                            <div class="col-md-1 text-center d-flex align-items-center">
+                                <img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $newConversations['img'] ?>"/>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-center">
+                                <p><strong><?php echo $newConversations['name'] ?></strong></p>
+                            </div>
+                        </div>
+                        <form class="row g-3 d-flex justify-content-center pt-5" action="index.php?action=postNewMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>&idRecipient=<?php echo $_SESSION['user']->getId(); ?>&idRecipient=<?php echo $newConversations['id_newContact']; ?>" method="post" class="foldedCorner" enctype="multipart/form-data">
+                            <div class="col-md-10 d-flex align-items-center">
+                                <input type="text" class="form-control" name="message" id="message">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                <button type="submit" name="submit" class="btn btn-primary mb-3">Envoyer</button>
+                            </div>
+                        </form>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </div>

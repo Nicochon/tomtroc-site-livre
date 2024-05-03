@@ -7,16 +7,87 @@ class MessageController
         $adminController = new AdminController();
         $adminController->checkIfUserIsConnected();
 
-        $idUser = Utils::protectGet($_GET['idUser']);
+        $idNewContact = 0;
+        $newContact = [];
+        $dataNewContact = [];
 
+        $idUser = Utils::protectGet($_GET['idUser']);
+        if(isset($_GET['idNewContact'])){
+            $idNewContact = Utils::protectGet($_GET['idNewContact']);
+            $newContact = Utils::checkIfConversationExist($idUser, $idNewContact);
+        }
+        
         $conversationManager = new ConversationManager();
         $conversations = $conversationManager->getConversationByUserAdmin($idUser);
 
-        $data = [];
+        $data = $this->getDataConversations($idUser, $conversations);
 
+        $userManager = new UserManager();
+        $imgManager = new ImgManager();
+
+        if(!$newContact && $idNewContact != 0){
+            $dataNewContact = [
+                'name' => $userManager->getUserById($idNewContact)->getPseudo(),
+                'id_newContact' => $idNewContact,
+                'img' => $imgManager->getImgByOwnerId($idNewContact)->getName()
+            ];
+        }
+
+        $view = new View('Chat');
+        $view->render('chat',[
+            'conversations' => $data,
+            'newConversations' => $dataNewContact
+        ]);
+    }
+
+    public function displayConversation(){
+
+        $idConversation = Utils::protectGet($_GET['idConversation']);
+        $idContact = Utils::protectGet($_GET['idContact']);
+
+        $data = $this->getDataConversation($idConversation, $idContact);
+
+        $view = new View('Conversation');
+        $view->render('conversation',[
+            'conversation' => $data
+        ]);
+    }
+
+
+    public function postMessage()
+    {
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $contentMessage = htmlspecialchars(Utils::request('message'));
+
+            $idUser = Utils::protectGet($_GET['idUser']);
+            $idContact = Utils::protectGet($_GET['idRecipient']);
+
+            $conversation = Utils::checkIfConversationExist($idUser, $idContact);
+
+            $conversationManager= new ConversationManager();
+            $messageManager = new MessageManager();
+
+            if($conversation){
+                $messageManager->addMessage($contentMessage, $idUser, $idContact, $conversation );
+                $conversationManager->updateDate($conversation);
+            } else {
+                $conversationManager->addConversation($idUser,$idContact);
+                $newConversation = Utils::checkIfConversationExist($idUser, $idContact);
+                $messageManager->addMessage($contentMessage, $idUser, $idContact, $newConversation );
+            }
+
+        }
+
+        $this->displayMessage();
+    }
+
+    public function getDataConversations($idUser, $conversations)
+    {
         $messageManager = new MessageManager();
         $userManager = new UserManager();
         $imgManager = new ImgManager();
+
+        $data = [];
 
         foreach ($conversations as $conversation) {
             if ($conversation['id_sender'] != $idUser) {
@@ -24,7 +95,6 @@ class MessageController
             } else {
                 $id_contact = $conversation['id_recipient'];
             }
-
             $data[] =[
                 'name' => $userManager->getUserById($id_contact)->getPseudo(),
                 'id_user' => $id_contact,
@@ -34,17 +104,11 @@ class MessageController
             ];
         }
 
-        $view = new View('Chat');
-        $view->render('chat',[
-            'conversations' => $data
-        ]);
+        return $data;
     }
 
-    public function displayConversation(){
-
-        $idConversation = Utils::protectGet($_GET['idConversation']);
-        $idContact = Utils::protectGet($_GET['idContact']);
-
+    public function getDataConversation($idConversation, $idContact)
+    {
         $imgManager = new ImgManager();
         $messageManager = new MessageManager();
         $userManager = new UserManager();
@@ -53,49 +117,10 @@ class MessageController
             'conversation' => $messageManager->getMessageByIdConversation($idConversation),
             'img' => $imgManager->getImgByOwnerId($idContact)->getName(),
             'pseudo' => $userManager->getUserById($idContact)->getPseudo(),
+            'id_recipient' => $userManager->getUserById($idContact)->getIdUser(),
         ];
 
-        $view = new View('Conversation');
-        $view->render('conversation',[
-            'conversation' => $data
-        ]);
-    }
-
-    public function sendMessage()
-    {
-
-    }
-
-    public function getConversationByUser($idUser)
-    {
-        $conversationManager = new ConversationManager();
-        $conversations = $conversationManager->getConversationByUserAdmin($idUser);
-        return $conversations;
-    }
-
-    public function getAllAdminConversation(){
-
-    }
-
-    public function postMessage()
-    {
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $contentMessage = htmlspecialchars(Utils::request('message'));
-
-            $conversation = Utils::checkIfConversationExist(Utils::protectGet($_GET['idUser']), Utils::protectGet($_GET['idRecipient']));
-
-            if($conversation){
-                echo '<pre>';
-                var_dump('post message avec l\'id_conversation '. $conversation);
-                echo '</pre>';
-            } else {
-                echo '<pre>';
-                var_dump('create conversation');
-                var_dump('post message');
-                echo '</pre>';
-            }
-
-        }
+        return $data;
     }
 
 

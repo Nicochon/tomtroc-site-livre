@@ -6,7 +6,7 @@
 
 <body>
     <div id="discover">
-        <div class="row p-5">
+        <div class="row">
             <div class="d-flex justify-content-center">
                 <div class="col-md-4 d-flex flex-column justify-content-center m-5">
                     <h1>Rejoignez nos lecteur passionnés</h1>

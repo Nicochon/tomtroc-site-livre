@@ -91,3 +91,52 @@ header .nav .logo {
 #myAccount .books tbody tr .delete {
   color: red;
 }
+
+#chat .messagingPicture {
+  border-radius: 75px;
+  height: 50px;
+  width: 50px;
+}
+#chat span {
+  font-size: 10px;
+}
+#chat .messaging {
+  background-color: #FAF9F7;
+}
+#chat .messaging p {
+  margin-bottom: 0rem;
+  font-size: 12px;
+}
+#chat .messaging #displayConversation {
+  outline: none;
+  text-decoration: none;
+}
+#chat .messaging #displayConversation:hover {
+  text-decoration: none;
+  background: #ffffff;
+}
+#chat #conversation {
+  background-color: #F5F3EF;
+}
+#chat #conversation .scrollBar {
+  height: 600px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+#chat #conversation .scrollBar .dataMessage {
+  height: 200px;
+}
+#chat #conversation .scrollBar .dataMessage div {
+  height: 100px;
+}
+#chat #conversation .scrollBar .message .myMessage {
+  background-color: #EDF2F6;
+  padding: 0 2rem 0 2rem;
+  margin-bottom: 1rem;
+}
+#chat #conversation .scrollBar .message .yourMessage {
+  background-color: #ffffff;
+  padding: 0 2rem 0 2rem;
+  margin-bottom: 1rem;
+}

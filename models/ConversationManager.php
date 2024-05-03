@@ -8,7 +8,6 @@ class ConversationManager extends AbstractEntityManager
 {
     public function getConversationByUsers($userOne, $userTwo)
     {
-
         $sql = "SELECT * FROM conversations WHERE 
                 (id_sender = :userOne AND id_recipient = :userTwo) OR
                 (id_recipient = :userOne AND id_sender = :userTwo)";
@@ -20,7 +19,6 @@ class ConversationManager extends AbstractEntityManager
 
         $conversation = $result->fetch();
 
-
         return $conversation;
     }
 
@@ -28,7 +26,7 @@ class ConversationManager extends AbstractEntityManager
     {
         $sql = "SELECT * FROM conversations WHERE 
                 (id_sender = :id_admin) OR
-                (id_recipient = :id_admin)";
+                (id_recipient = :id_admin) ORDER BY date DESC";
         $result = $this->db->query($sql, [
             'id_admin' => $id_admin,
         ]);
@@ -39,15 +37,18 @@ class ConversationManager extends AbstractEntityManager
 
     public function addConversation($id_sender, $id_recipient)
     {
-        $sql = "INSERT INTO conversation (id_sender, id_recipient, data) VALUES (:id_sender, :id_recipient, :owner_Id, :content, NOW(), :status)";
+        $sql = "INSERT INTO conversations (id_sender, id_recipient, date) VALUES (:id_sender, :id_recipient, NOW())";
         $this->db->query($sql, [
             'id_sender' => $id_sender,
             'id_recipient' => $id_recipient
         ]);
     }
 
-    public function getAllconversationById($id_user)
+    public function updateDate($id_conversation)
     {
-
+        $sql = "UPDATE conversations SET date = NOW() WHERE id_conversation =:id_conversation";
+        $this->db->query($sql, [
+            'id_conversation' => $id_conversation,
+        ]);
     }
 }

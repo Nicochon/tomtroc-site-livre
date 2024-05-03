@@ -1,0 +1,54 @@
+#chat {
+    .messagingPicture {
+        border-radius: 75px;
+        height: 50px;
+        width: 50px;
+    }
+    span{
+        font-size: 10px;
+    }
+    .messaging{
+        background-color: #FAF9F7;
+        p{
+            margin-bottom: 0rem;
+            font-size: 12px;
+        }
+        #displayConversation{
+            outline: none;
+            text-decoration: none;
+            &:hover {
+                text-decoration: none;
+                background: #ffffff;
+            }
+        }
+    }
+    #conversation{
+        background-color: #F5F3EF;
+        .scrollBar {
+            height: 600px;
+            overflow-y: scroll;
+            scrollbar-color: rebeccapurple green;
+            scrollbar-width: thin;
+            .dataMessage{
+                height: 200px;
+                div{
+                    height: 100px;
+                }
+            }
+            .message{
+                .myMessage{
+                    background-color: #EDF2F6;
+                    padding: 0 2rem 0 2rem;
+                    margin-bottom: 1rem;
+                }
+                .yourMessage{
+                    background-color: #ffffff;
+                    padding: 0 2rem 0 2rem;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+
+
+    }
+}
