@@ -1,6 +1,16 @@
-#discover, #explanation, #about{
+@import '../fichierPartiel/_bookCard.scss';
+
+.container-fluid-discover, .container-fluid-explanation, .container-fluid-about{
   background: #F5F3EF;
 }
+
+.container-fluid-lastBook{
+  background: #FAF9F7;
+  #lastBook{
+    @extend .book-card;
+  }
+}
+
 
 #discover{
   p{
@@ -16,4 +26,23 @@
 
 #banner{
   overflow: hidden;
+  img{
+    width: 100%;
+  }
+}
+
+#about{
+  padding-bottom: 10rem;
+  h3{
+    padding-bottom: 2rem;
+  }
+  span{
+    color: #A6A6A6;
+    font-size: 12px;
+  }
+  .vector{
+    position: relative;
+    left: 245px;
+    top: 25px;
+  }
 }

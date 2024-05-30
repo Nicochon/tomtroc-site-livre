@@ -1,18 +1,20 @@
-header{
+.container-fluid-header{
   background: #F5F3EF;
-  .nav{
-    height: 51px;
-    img{
-      background-color: $background-btn-color;
-      padding: 8px;
-      border-radius: 5px;
-    }
-    a{
-      font-size: 17px;
-    }
-    .logo{
-      color: $background-btn-color;
-      font-size: 20px;
+  header{
+    .nav{
+      height: 51px;
+      img{
+        background-color: $background-btn-color;
+        padding: 8px;
+        border-radius: 5px;
+      }
+      a{
+        font-size: 17px;
+      }
+      .logo{
+        color: $background-btn-color;
+        font-size: 20px;
+      }
     }
   }
 }

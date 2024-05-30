@@ -1,0 +1,24 @@
+.book-card{
+  background: #ffffff;
+  border-radius: 0 0 10px 10px;
+  p{
+    padding-left: 0.5rem;
+  }
+  .title-book-card, .seller-book-card{
+    padding-top: 0.5rem;
+  }
+  .author-book-card, .seller-book-card{
+    p{
+      color: #A6A6A6;
+    }
+  }
+  .title-book-card{
+    font-size: 16px;
+  }
+  .author-book-card{
+    font-size: 14px;
+  }
+  .seller-book-card{
+    font-size: 10px;
+  }
+}
