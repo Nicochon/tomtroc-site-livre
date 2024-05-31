@@ -1,5 +1,3 @@
-@import '../fichierPartiel/_form.scss';
-
 .container-fluid-connection{
   #connection{
     img{
@@ -8,6 +6,5 @@
       object-fit: cover;
       object-position: center;
     }
-    @extend .formStyle;
   }
 }

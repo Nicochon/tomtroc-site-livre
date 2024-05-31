@@ -1,0 +1,22 @@
+.container-fluid-addBook{
+  background: #FAF9F7;
+  color: #292929;
+  #addBook{
+    background: #ffffff;
+    border-radius: 20px;
+    .updatePhoto{
+      a{
+        border-bottom: 1px solid;
+      }
+    }
+    .formStyle{
+      .form-control, .form-select{
+        background-color: #F0F0F0;
+        height: 50px;
+      }
+      .formContent{
+        height: 350px;
+      }
+    }
+  }
+}

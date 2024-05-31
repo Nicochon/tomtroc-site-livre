@@ -1,0 +1,36 @@
+.books{
+  .custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 12px;
+    thead{
+      height: 75px;
+      font-size: 8px;
+      font-weight: 600;
+    }
+    tbody{
+      tr{
+        height: 150px;
+        span{
+          color: #ffffff;
+          padding: 5px 1rem;
+          border-radius: 15px;
+        }
+        .available{
+          background-color: #00AC66;
+        }
+        .unavailable{
+          background-color: #C56D6D;
+        }
+        .delete, .edit{
+          border-bottom: 1px solid;
+        }
+        .delete{
+          color: #CB2D2D;
+        }
+      }
+    }
+  }
+}

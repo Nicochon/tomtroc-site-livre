@@ -1,0 +1,32 @@
+.infoUser{
+  background: #ffffff;
+  border-radius: 20px;
+  .userPhoto{
+      width: 50%;
+      border-bottom: #F5F3EF solid 1px;
+      img{
+          height: 135px;
+          width: 135px;
+          border-radius: 100px;
+      }
+      a{
+          border-bottom: 1px solid;
+          color: #A6A6A6;
+          font-size: 14px;
+      }
+  }
+  .info{
+      .dateMember{
+          color: #A6A6A6;
+          font-size: 14px;
+      }
+      .littleText{
+          padding-top: 2rem;
+          font-size: 8px;
+          font-weight: 600;
+      }
+      .bookNumber{
+          font-size: 14px;
+      }
+  }
+}
