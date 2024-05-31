@@ -30,6 +30,7 @@ class HomeController
                 'author' => $bookData->getAuthor(),
                 'owner' => $userManger->getUserById($bookData->getOwnerId())->getPseudo(),
                 'imgName' => $imgManager->getImgByOwnerId($bookData->getIdBook())->getName(),
+                'idBook' => $bookData->getIdBook(),
             ];
         }
 

@@ -35,10 +35,12 @@
                     <?php if(!empty($books)):
                         foreach ($books as $book):?>
                             <div class="col-md-2 m-4 p-0 book-card">
-                                <div><img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/book/<?php echo $book['imgName']; ?>" alt="couverture du livre: <?php echo $book['title']; ?>"/></div>
-                                <div class="title-book-card"><p><?php echo $book['title']; ?></p></div>
-                                <div class="author-book-card"><p><?php echo $book['author']; ?></p></div>
-                                <div class="seller-book-card"><p>Vendu par: <?php echo $book['owner']; ?></p></div>
+                                <a href="index.php?action=displayBook&idBook=<?php echo $book['idBook']; ?>">
+                                    <div><img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/book/<?php echo $book['imgName']; ?>" alt="couverture du livre: <?php echo $book['title']; ?>"/></div>
+                                    <div class="title-book-card"><p><?php echo $book['title']; ?></p></div>
+                                    <div class="author-book-card"><p><?php echo $book['author']; ?></p></div>
+                                    <div class="seller-book-card"><p>Vendu par: <?php echo $book['owner']; ?></p></div>
+                                </a>
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
