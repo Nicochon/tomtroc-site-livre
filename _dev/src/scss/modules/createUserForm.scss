@@ -1,13 +1,10 @@
-@import '../fichierPartiel/_form.scss';
-
-.container-fluid-connection{
-  #connection{
+.container-fluid-formCreateUser{
+  #createUser{
     img{
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
     }
-    @extend .formStyle;
   }
 }

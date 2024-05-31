@@ -7,7 +7,7 @@
     <div class="container">
         <div id="connection">
             <div class="row">
-                <div class="connection-form col-md-4 d-flex flex-column justify-content-center ">
+                <div class="connection-form formStyle col-md-4 d-flex flex-column justify-content-center ">
                     <form action="index.php?action=connectUser" method="post" class="foldedCorner pb-4">
                         <h2>Connexion</h2>
                         <?php echo '' ?>
