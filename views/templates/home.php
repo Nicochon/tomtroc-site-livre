@@ -14,7 +14,7 @@
                         <div class="col-md-4 d-flex flex-column justify-content-center m-5">
                             <h1>Rejoignez nos lecteur passionnés</h1>
                             <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
-                            <div><a class="btn btn-primary" href="#">Découvrir</a></div>
+                            <div><a class="btn btn-primary" href="index.php?action=displayAllBooks">Découvrir</a></div>
                         </div>
                         <div class="col-md-4 m-5">
                             <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/home/photoHome.jpeg" alt="personne qui lit entouré de nombreux livres"/>
@@ -64,7 +64,7 @@
                         <div class="stage col-md-2 m-4 d-flex align-items-center"><p>Parcourz les livres disponibles chez d'autres membres.</p></div>
                         <div class="stage col-md-2 m-4 d-flex align-items-center"><p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
                     </div>
-                    <a class="btn btn-primary" href="#">Voir tous les livres</a>
+                    <a class="btn btn-primary" href="index.php?action=displayAllBooks">Voir tous les livres</a>
                 </div>
             </div>
         </div>

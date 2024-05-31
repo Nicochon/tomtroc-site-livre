@@ -23,7 +23,7 @@
                         </div>
                     </a>
                     <div class=" btn-message d-flex justify-content-center">
-                        <a class="btn btn-primary" href="index.php?action=displayPublicProfile&id=<?php echo $dataUser['id']; ?>">Envoyer un message</a>
+                        <a class="btn btn-primary" href="index.php?action=displayMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>&idNewContact=<?php echo $dataUser['id']; ?>">Envoyer un message</a>
                     </div>
                 </div>
             </div>
