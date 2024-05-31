@@ -1,52 +1,65 @@
-#chat {
-    .messagingPicture {
-        border-radius: 75px;
-        height: 50px;
-        width: 50px;
-    }
-    span{
-        font-size: 10px;
-    }
-    .messaging{
-        background-color: #FAF9F7;
-        p{
-            margin-bottom: 0rem;
+.container-fluid-chat{
+    background-color: #F5F3EF;
+    #chat {
+        .messagingPicture {
+            border-radius: 75px;
+            height: 50px;
+            width: 50px;
+        }
+        span{
+            font-size: 10px;
+        }
+        .contentMessaging{
+            color: #A6A6A6;
             font-size: 12px;
         }
-        #conversations{
-            &:hover {
-                text-decoration: none;
-                background: #ffffff;
+        .messaging{
+            background-color: #FAF9F7;
+            p{
+                margin-bottom: 0rem;
+                font-size: 12px;
             }
-        }
-    }
-    #conversation{
-        background-color: #F5F3EF;
-        .scrollBar {
-            height: 600px;
-            overflow-y: scroll;
-            scrollbar-color: rebeccapurple green;
-            scrollbar-width: thin;
-            .dataMessage{
-                height: 200px;
-                div{
-                    height: 100px;
-                }
-            }
-            .message{
-                .myMessage{
-                    background-color: #EDF2F6;
-                    padding: 0 2rem 0 2rem;
-                    margin-bottom: 1rem;
-                }
-                .yourMessage{
-                    background-color: #ffffff;
-                    padding: 0 2rem 0 2rem;
-                    margin-bottom: 1rem;
+            #conversations{
+                &:hover {
+                    text-decoration: none;
+                    background: #ffffff;
                 }
             }
         }
+        #conversation{
+            .scrollBar {
+                height: 600px;
+                overflow-y: scroll;
+                scrollbar-color: rebeccapurple green;
+                scrollbar-width: thin;
+                .dataMessage{
+                    height: 200px;
+                    div{
+                        height: 100px;
+                    }
+                }
+                .message{
+                    font-size: 12px;
+                    .mini{
+                        height: 25px;
+                        width: 25px;
+                    }
+                    .myMessage{
+                        background-color: #EDF2F6;
+                        padding: 0 2rem 0 2rem;
+                        margin-bottom: 0.5rem;
+                        border-radius: 10px;
+                    }
+                    .yourMessage{
+                        background-color: #ffffff;
+                        padding: 0 2rem 0 1rem;
+                        margin-bottom: 0.5rem;
+                        border-radius: 10px;
+                    }
+                }
+            }
 
 
+        }
     }
 }

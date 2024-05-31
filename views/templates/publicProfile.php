@@ -10,11 +10,11 @@
                         <div><h3><?php echo $userInfo['pseudo']; ?></h3></div>
                         <div class="dateMember">Membre depuis le <?php echo $userInfo['dateUser']; ?></div>
                         <div class="littleText"><span>Bibiliotheque</span></div>
-                        <div class="row d-flex justify-content-center bookNumber">
+                        <div class="row d-flex justify-content-center pb-5 bookNumber">
                             <div class="col-md-2 text-end p-0"><img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/admin/vector.svg"/></div>
                             <div class="col-md-5 p-0"><p><?php echo count($booksInfo); ?> livre(s)</p></div>
                         </div>
-                        <a class="btn btn-primary" href="index.php?action=displayMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>&idNewContact=<?php echo $userInfo['idUser']; ?>">Contacter</a>
+                        <a class="btn btn-primary btnInfoUser" href="index.php?action=displayMessage&idUser=<?php echo $_SESSION['user']->getId(); ?>&idNewContact=<?php echo $userInfo['idUser']; ?>">Ecrire un message</a>
                     </div>
                 </div>
                 <div class="col-md-8 pb-5">

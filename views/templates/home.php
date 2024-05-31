@@ -5,6 +5,7 @@
 ?>
 
 <body>
+<div class="container-fluid-homepage">
     <div class="container-fluid-discover">
         <div class="container">
             <div id="discover">
@@ -91,5 +92,7 @@
             </div>
         </div>
     </div>
+</div>
+
 
 </body>

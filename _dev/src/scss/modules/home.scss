@@ -1,48 +1,61 @@
-@import '../fichierPartiel/_bookCard.scss';
+.container-fluid-homepage{
+  h1, h2, h3{
+    font-family: 'Playfair Display', serif;
+    color: #292929;
+  }
 
-.container-fluid-discover, .container-fluid-explanation, .container-fluid-about{
-  background: #F5F3EF;
-}
+  .container-fluid-discover, .container-fluid-explanation, .container-fluid-about{
+    background: #F5F3EF;
+  }
 
-.container-fluid-lastBook{
-  background: #FAF9F7;
-  #lastBook{
-    @extend .book-card;
+  .container-fluid-lastBook{
+    background-color: #FAF9F7;
+  }
+
+  #discover{
+    p{
+      padding: 10px 0 15px 0;
+    }
+  }
+
+  #explanation .stage{
+    background: #ffffff;
+    height: 139px;
+    border-radius: 10px;
+  }
+
+  #banner{
+    overflow: hidden;
+    img{
+      width: 100%;
+    }
+  }
+
+  #about{
+    padding-bottom: 10rem;
+    h3{
+      padding-bottom: 2rem;
+    }
+    span{
+      color: #A6A6A6;
+      font-size: 12px;
+    }
+    .vector{
+      position: relative;
+      left: 245px;
+      top: 25px;
+    }
   }
 }
 
 
-#discover{
-  p{
-    padding: 10px 0 15px 0;
-  }
-}
 
-#explanation .stage{
-  background: #ffffff;
-  height: 139px;
-  border-radius: 10px;
-}
 
-#banner{
-  overflow: hidden;
-  img{
-    width: 100%;
-  }
-}
 
-#about{
-  padding-bottom: 10rem;
-  h3{
-    padding-bottom: 2rem;
-  }
-  span{
-    color: #A6A6A6;
-    font-size: 12px;
-  }
-  .vector{
-    position: relative;
-    left: 245px;
-    top: 25px;
-  }
-}
+
+
+
+
+
+
+

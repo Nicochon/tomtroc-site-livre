@@ -10,26 +10,26 @@
   font-size: 14px;
 }
 
-.book-card, .container-fluid-lastBook #lastBook {
+.book-card {
   background: #ffffff;
   border-radius: 0 0 10px 10px;
 }
-.book-card p, .container-fluid-lastBook #lastBook p {
+.book-card p {
   padding-left: 0.5rem;
 }
-.book-card .title-book-card, .container-fluid-lastBook #lastBook .title-book-card, .book-card .seller-book-card, .container-fluid-lastBook #lastBook .seller-book-card {
+.book-card .title-book-card, .book-card .seller-book-card {
   padding-top: 0.5rem;
 }
-.book-card .author-book-card p, .container-fluid-lastBook #lastBook .author-book-card p, .book-card .seller-book-card p, .container-fluid-lastBook #lastBook .seller-book-card p {
+.book-card .author-book-card p, .book-card .seller-book-card p {
   color: #A6A6A6;
 }
-.book-card .title-book-card, .container-fluid-lastBook #lastBook .title-book-card {
+.book-card .title-book-card {
   font-size: 16px;
 }
-.book-card .author-book-card, .container-fluid-lastBook #lastBook .author-book-card {
+.book-card .author-book-card {
   font-size: 14px;
 }
-.book-card .seller-book-card, .container-fluid-lastBook #lastBook .seller-book-card {
+.book-card .seller-book-card {
   font-size: 10px;
 }
 
@@ -141,67 +141,48 @@ footer img {
   height: 25px;
 }
 
-.book-card, .container-fluid-lastBook #lastBook {
-  background: #ffffff;
-  border-radius: 0 0 10px 10px;
+.container-fluid-homepage h1, .container-fluid-homepage h2, .container-fluid-homepage h3 {
+  font-family: "Playfair Display", serif;
+  color: #292929;
 }
-.book-card p, .container-fluid-lastBook #lastBook p {
-  padding-left: 0.5rem;
-}
-.book-card .title-book-card, .container-fluid-lastBook #lastBook .title-book-card, .book-card .seller-book-card, .container-fluid-lastBook #lastBook .seller-book-card {
-  padding-top: 0.5rem;
-}
-.book-card .author-book-card p, .container-fluid-lastBook #lastBook .author-book-card p, .book-card .seller-book-card p, .container-fluid-lastBook #lastBook .seller-book-card p {
-  color: #A6A6A6;
-}
-.book-card .title-book-card, .container-fluid-lastBook #lastBook .title-book-card {
-  font-size: 16px;
-}
-.book-card .author-book-card, .container-fluid-lastBook #lastBook .author-book-card {
-  font-size: 14px;
-}
-.book-card .seller-book-card, .container-fluid-lastBook #lastBook .seller-book-card {
-  font-size: 10px;
-}
-
-.container-fluid-discover, .container-fluid-explanation, .container-fluid-about {
+.container-fluid-homepage .container-fluid-discover, .container-fluid-homepage .container-fluid-explanation, .container-fluid-homepage .container-fluid-about {
   background: #F5F3EF;
 }
-
-.container-fluid-lastBook {
-  background: #FAF9F7;
+.container-fluid-homepage .container-fluid-lastBook {
+  background-color: #FAF9F7;
 }
-#discover p {
+.container-fluid-homepage #discover p {
   padding: 10px 0 15px 0;
 }
-
-#explanation .stage {
+.container-fluid-homepage #explanation .stage {
   background: #ffffff;
   height: 139px;
   border-radius: 10px;
 }
-
-#banner {
+.container-fluid-homepage #banner {
   overflow: hidden;
 }
-#banner img {
+.container-fluid-homepage #banner img {
   width: 100%;
 }
-
-#about {
+.container-fluid-homepage #about {
   padding-bottom: 10rem;
 }
-#about h3 {
+.container-fluid-homepage #about h3 {
   padding-bottom: 2rem;
 }
-#about span {
+.container-fluid-homepage #about span {
   color: #A6A6A6;
   font-size: 12px;
 }
-#about .vector {
+.container-fluid-homepage #about .vector {
   position: relative;
   left: 245px;
   top: 25px;
+}
+
+.container-fluid-allBooks {
+  background-color: #FAF9F7;
 }
 
 .container-fluid-bookPage {
@@ -322,48 +303,67 @@ footer img {
 .container-fluid-publicProfile .infoUser {
   height: 600px;
 }
+.container-fluid-publicProfile .infoUser .btnInfoUser {
+  color: #00AC66 !important;
+  background-color: #F5F3EF !important;
+  border: 1px solid #00AC66 !important;
+  width: auto !important;
+}
 
-#chat .messagingPicture {
+.container-fluid-chat {
+  background-color: #F5F3EF;
+}
+.container-fluid-chat #chat .messagingPicture {
   border-radius: 75px;
   height: 50px;
   width: 50px;
 }
-#chat span {
+.container-fluid-chat #chat span {
   font-size: 10px;
 }
-#chat .messaging {
+.container-fluid-chat #chat .contentMessaging {
+  color: #A6A6A6;
+  font-size: 12px;
+}
+.container-fluid-chat #chat .messaging {
   background-color: #FAF9F7;
 }
-#chat .messaging p {
+.container-fluid-chat #chat .messaging p {
   margin-bottom: 0rem;
   font-size: 12px;
 }
-#chat .messaging #conversations:hover {
+.container-fluid-chat #chat .messaging #conversations:hover {
   text-decoration: none;
   background: #ffffff;
 }
-#chat #conversation {
-  background-color: #F5F3EF;
-}
-#chat #conversation .scrollBar {
+.container-fluid-chat #chat #conversation .scrollBar {
   height: 600px;
   overflow-y: scroll;
   scrollbar-color: rebeccapurple green;
   scrollbar-width: thin;
 }
-#chat #conversation .scrollBar .dataMessage {
+.container-fluid-chat #chat #conversation .scrollBar .dataMessage {
   height: 200px;
 }
-#chat #conversation .scrollBar .dataMessage div {
+.container-fluid-chat #chat #conversation .scrollBar .dataMessage div {
   height: 100px;
 }
-#chat #conversation .scrollBar .message .myMessage {
+.container-fluid-chat #chat #conversation .scrollBar .message {
+  font-size: 12px;
+}
+.container-fluid-chat #chat #conversation .scrollBar .message .mini {
+  height: 25px;
+  width: 25px;
+}
+.container-fluid-chat #chat #conversation .scrollBar .message .myMessage {
   background-color: #EDF2F6;
   padding: 0 2rem 0 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
 }
-#chat #conversation .scrollBar .message .yourMessage {
+.container-fluid-chat #chat #conversation .scrollBar .message .yourMessage {
   background-color: #ffffff;
-  padding: 0 2rem 0 2rem;
-  margin-bottom: 1rem;
+  padding: 0 2rem 0 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
 }

@@ -13,7 +13,7 @@
                     </form>
                 </div>
             </div>
-            <div class="row d-flex justify-content-between pt-4 pb-4">
+            <div class="row d-flex justify-content-between pt-4 pb-1">
                 <?php if (!empty($dataBooks)): ?>
                     <?php foreach ($dataBooks as $dataBook): ?>
                         <div class="col-md-2 m-4 p-0 book-card">
