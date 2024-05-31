@@ -4,11 +4,11 @@
  */
 ?>
 <div id="addBook" class="pt-4">
-    <?php if ($message !== null){ ?>
+    <?php if ($message !== null): ?>
         <div class="alert alert-success" role="alert">
             <?php echo $message; ?>
         </div>
-    <?php } ?>
+    <?php endif; ?>
     <div class="row p-5">
         <div class="connection-form col-md-4 d-flex flex-column justify-content-center ">
             <form action="index.php?action=addBook" method="post" class="foldedCorner" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
             </form>
         </div>
         <div class="col-md-6">
-            <img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/form/form_create_connect_user.jpg" alt="étagère rempli de livre"/>
+            <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/form/form_create_connect_user.jpg" alt="étagère rempli de livre"/>
         </div>
     </div>
 </div>

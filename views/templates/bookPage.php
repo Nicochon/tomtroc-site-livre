@@ -3,7 +3,7 @@
         <div id="bookPage">
             <div class="row">
                 <div class="col-md-6">
-                    <img class="img-fluid bookImage" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $userPhoto?>"/>
+                    <img class="img-fluid bookImage" src="<?php echo ROOT_DIR; ?>/views/img/book/<?php echo $userPhoto; ?>"/>
                 </div>
                 <div class="col-md-5 dataBook">
                     <h1><?php echo $dataBook->getTitle(); ?></h1>
@@ -12,10 +12,10 @@
                     <p class="section-Title">Description</p>
                     <p class="dataBook-content"><?php echo $dataBook->getContent(); ?></p>
                     <p class="section-Title">Proriétaire</p>
-                    <a href="index.php?action=displayPublicProfile&id=<?php echo $dataUser['id'] ?>">
+                    <a href="index.php?action=displayPublicProfile&id=<?php echo $dataUser['id']; ?>">
                         <div class="row seller-badge">
                             <div class="col-md-4 p-2">
-                                <img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $dataUser['photo'] ?>"/>
+                                <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/admin/<?php echo $dataUser['photo']; ?>"/>
                             </div>
                             <div class="col-md-5 pseudo-badge pt-4">
                                 <p><?php echo $dataUser['pseudo']; ?></p>
@@ -23,7 +23,7 @@
                         </div>
                     </a>
                     <div class=" btn-message d-flex justify-content-center">
-                        <a class="btn btn-primary" href="index.php?action=displayPublicProfile&id=<?php echo $dataUser['id'] ?>">Envoyer un message</a>
+                        <a class="btn btn-primary" href="index.php?action=displayPublicProfile&id=<?php echo $dataUser['id']; ?>">Envoyer un message</a>
                     </div>
                 </div>
             </div>

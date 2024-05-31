@@ -10,10 +10,10 @@
                 <div class="connection-form formStyle col-md-4 d-flex flex-column justify-content-center ">
                     <form action="index.php?action=connectUser" method="post" class="foldedCorner pb-4">
                         <h2>Connexion</h2>
-                        <?php echo '' ?>
-                        <?php if($error != ''){?>
-                        <p class="text-danger strong"><?php echo $error ?></p>
-                        <?php }?>
+                        <?php echo ''; ?>
+                        <?php if($error != ''): ?>
+                        <p class="text-danger strong"><?php echo $error; ?></p>
+                        <?php endif; ?>
                         <div class="formGrid pt-5">
                             <div class="mb-4">
                                 <label for="pseudo" class="form-label">Pseudo</label>
@@ -29,7 +29,7 @@
                     <p>Pas de compte ? <a href="index.php?action=createUserForm">inscrivez-vous</a></p>
                 </div>
                 <div class="col-md-8">
-                    <img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/form/form_create_connect_user.jpg" alt="étagère rempli de livre"/>
+                    <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/form/form_create_connect_user.jpg" alt="étagère rempli de livre"/>
                 </div>
             </div>
         </div>

@@ -14,18 +14,18 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-between pt-4 pb-4">
-                <?php if (!empty($dataBooks)){?>
-                    <?php foreach ($dataBooks as $dataBook){?>
+                <?php if (!empty($dataBooks)): ?>
+                    <?php foreach ($dataBooks as $dataBook): ?>
                         <div class="col-md-2 m-4 p-0 book-card">
-                            <a href="index.php?action=displayBook&idBook=<?php echo $dataBook['idBook'] ?>">
-                                <div><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $dataBook['imgName'] ?>" alt="couverture du livre: <?php echo $dataBook['title']?>"/></div>
-                                <div class="title-book-card"><p><?php echo $dataBook['title'] ?></p></div>
-                                <div class="author-book-card"><p><?php echo $dataBook['author'] ?></p></div>
-                                <div class="seller-book-card"><p>Vendu par: <?php echo $dataBook['owner'] ?></p></div>
+                            <a href="index.php?action=displayBook&idBook=<?php echo $dataBook['idBook']; ?>">
+                                <div><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $dataBook['imgName']; ?>" alt="couverture du livre: <?php echo $dataBook['title']; ?>"/></div>
+                                <div class="title-book-card"><p><?php echo $dataBook['title']; ?></p></div>
+                                <div class="author-book-card"><p><?php echo $dataBook['author']; ?></p></div>
+                                <div class="seller-book-card"><p>Vendu par: <?php echo $dataBook['owner']; ?></p></div>
                             </a>
                         </div>
-                    <?php } ?>
-                <?php } ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

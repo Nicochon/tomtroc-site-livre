@@ -11,17 +11,17 @@
             <div class="info row d-flex justify-content-around pt-5 pb-5 ">
                 <div class="infoUser col-md-5 text-center d-flex flex-column align-items-center ">
                     <div class="userPhoto pt-5 pb-5">
-                        <img id="profilePicture" class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/<?php echo $userInfo['imgName'] ?>" alt="Photo de profil"/>
+                        <img id="profilePicture" class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/admin/<?php echo $userInfo['imgName']; ?>" alt="Photo de profil"/>
                         <div class="pt-3"><a id="getFormToLoad" href="index.php?action=updatePhotoForm&key=profile">Modifier</a></div>
                         <div id="formToLoad"></div>
                     </div>
                     <div class="info pt-5">
-                        <div><h3><?php echo $userInfo['pseudo'] ?></h3></div>
-                        <div class="dateMember">Membre depuis le <?php echo $userInfo['dateUser'] ?></div>
+                        <div><h3><?php echo $userInfo['pseudo']; ?></h3></div>
+                        <div class="dateMember">Membre depuis le <?php echo $userInfo['dateUser']; ?></div>
                         <div class="littleText"><span>Bibiliotheque</span></div>
                         <div class="row d-flex justify-content-center bookNumber">
-                            <div class="col-md-2 text-end p-0"><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/admin/vector.svg"/></div>
-                            <div class="col-md-5 p-0"><p><?php echo count($booksInfo) ?> livre(s)</p></div>
+                            <div class="col-md-2 text-end p-0"><img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/admin/vector.svg"/></div>
+                            <div class="col-md-5 p-0"><p><?php echo count($booksInfo); ?> livre(s)</p></div>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                                 <div class="formGrid">
                                     <div class="mb-3">
                                         <label for="email" class="form-label">E-mail</label>
-                                        <input class="form-control" type="text" name="email" id="email" value="<?php echo $userInfo['email'] ?>" required>
+                                        <input class="form-control" type="text" name="email" id="email" value="<?php echo $userInfo['email']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Mot de passe</label>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="pseudo" class="form-label">Pseudo</label>
-                                        <input class="form-control" type="text" name="pseudo" id="pseudo" value="<?php echo $userInfo['pseudo'] ?>"  required>
+                                        <input class="form-control" type="text" name="pseudo" id="pseudo" value="<?php echo $userInfo['pseudo']; ?>"  required>
                                     </div>
                                     <button class=" btnInfoUser submit btn btn-primary mt-3">Enregistrer</button>
                                 </div>
@@ -62,17 +62,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php forEach($booksInfo as $bookInfo){?>
+                    <?php forEach($booksInfo as $bookInfo):?>
                         <tr>
-                            <th class="align-middle" scope="row"><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $bookInfo['img'] ?>" alt="Photo du livre" width="150" height="150"/></th>
-                            <td class="align-middle"><?php echo $bookInfo['title'] ?></td>
-                            <td class="align-middle"><?php echo $bookInfo['author'] ?></td>
-                            <td class="align-middle"><?php echo $bookInfo['content'] ?> ...</td>
-                            <td class="align-middle"><span class="<?php echo $bookInfo['availability'] === 'Disponible' ? 'available' : 'unavailable'; ?>"><?php echo $bookInfo['availability'] ?></span></td>
+                            <th class="align-middle" scope="row"><img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/book/<?php echo $bookInfo['img']; ?>" alt="Photo du livre" width="150" height="150"/></th>
+                            <td class="align-middle"><?php echo $bookInfo['title']; ?></td>
+                            <td class="align-middle"><?php echo $bookInfo['author']; ?></td>
+                            <td class="align-middle"><?php echo $bookInfo['content']; ?> ...</td>
+                            <td class="align-middle"><span class="<?php echo $bookInfo['availability'] === 'Disponible' ? 'available' : 'unavailable'; ?>"><?php echo $bookInfo['availability']; ?></span></td>
                             <td class="align-middle"><a class="edit" href="index.php?action=updateBookForm&id=<?php echo $bookInfo['id']; ?>">Editer</a></td>
                             <td class="align-middle"><a id="deleteBook" class="delete" href="index.php?action=deleteBookVerification&id=<?php echo $bookInfo['id']; ?>">Supprimer</a></td>
                         </tr>
-                    <?php } ?>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
