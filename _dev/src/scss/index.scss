@@ -1,18 +1,21 @@
 
 @import "variables";
-@import "fichierPartiel/_form.scss";
+
 @import "fichierPartiel/_bookCard.scss";
-@import "fichierPartiel/_userCard.scss";
+@import "fichierPartiel/_form.scss";
+@import "fichierPartiel/_littleTitlePage.scss";
 @import "fichierPartiel/_tabBooks.scss";
-@import "modules/main";
-@import "modules/header";
-@import "modules/footer";
-@import "modules/home";
+@import "fichierPartiel/_userCard.scss";
+
 @import "modules/allBooks";
 @import "modules/bookPage";
 @import "modules/connectionForm";
 @import "modules/createUserForm";
-@import "modules/updateBookForm";
+@import "modules/footer";
+@import "modules/header";
+@import "modules/home";
+@import "modules/main";
+@import "modules/messaging";
 @import "modules/myAccount";
 @import "modules/publicProfil";
-@import "modules/messaging";
+@import "modules/updateBookForm";

@@ -1,15 +1,3 @@
-.formStyle label {
-  color: #A6A6A6;
-  font-size: 14px;
-}
-.formStyle button {
-  width: 100%;
-}
-.formStyle p, .formStyle a {
-  color: #292929;
-  font-size: 14px;
-}
-
 .book-card {
   background: #ffffff;
   border-radius: 0 0 10px 10px;
@@ -33,35 +21,22 @@
   font-size: 10px;
 }
 
-.infoUser {
-  background: #ffffff;
-  border-radius: 20px;
-}
-.infoUser .userPhoto {
-  width: 50%;
-  border-bottom: #F5F3EF solid 1px;
-}
-.infoUser .userPhoto img {
-  height: 135px;
-  width: 135px;
-  border-radius: 100px;
-}
-.infoUser .userPhoto a {
-  border-bottom: 1px solid;
+.formStyle label {
   color: #A6A6A6;
   font-size: 14px;
 }
-.infoUser .info .dateMember {
+.formStyle button {
+  width: 100%;
+}
+.formStyle p, .formStyle a {
+  color: #292929;
+  font-size: 14px;
+}
+
+.container-fluid-littleTitlePage {
+  background: #F5F3EF;
+  font-size: 10px;
   color: #A6A6A6;
-  font-size: 14px;
-}
-.infoUser .info .littleText {
-  padding-top: 2rem;
-  font-size: 8px;
-  font-weight: 600;
-}
-.infoUser .info .bookNumber {
-  font-size: 14px;
 }
 
 .books .custom-table {
@@ -100,87 +75,35 @@
   color: #CB2D2D;
 }
 
-body {
-  font-family: Inter, serif;
-  font-weight: 300;
-  color: #000000;
-}
-body .btn-primary {
-  background-color: #00AC66 !important;
-  border: #00AC66 !important;
-  padding: 15px 25px;
-}
-body a {
-  outline: none;
-  text-decoration: none;
-  color: black;
-}
-body a:hover {
-  border-bottom: 1px solid;
-}
-
-.container-fluid-header {
-  background: #F5F3EF;
-}
-.container-fluid-header header .nav {
-  height: 80px;
-}
-.container-fluid-header header .nav img {
-  background-color: #00AC66;
-  padding: 8px;
-  border-radius: 5px;
-}
-.container-fluid-header header .nav a {
-  font-size: 17px;
-}
-.container-fluid-header header .nav .logo {
-  color: #00AC66;
-  font-size: 20px;
-}
-
-footer img {
-  width: 30px;
-  height: 25px;
-}
-
-.container-fluid-homepage h1, .container-fluid-homepage h2, .container-fluid-homepage h3 {
-  font-family: "Playfair Display", serif;
-  color: #292929;
-}
-.container-fluid-homepage .container-fluid-discover, .container-fluid-homepage .container-fluid-explanation, .container-fluid-homepage .container-fluid-about {
-  background: #F5F3EF;
-}
-.container-fluid-homepage .container-fluid-lastBook {
-  background-color: #FAF9F7;
-}
-.container-fluid-homepage #discover p {
-  padding: 10px 0 15px 0;
-}
-.container-fluid-homepage #explanation .stage {
+.infoUser {
   background: #ffffff;
-  height: 139px;
-  border-radius: 10px;
+  border-radius: 20px;
 }
-.container-fluid-homepage #banner {
-  overflow: hidden;
+.infoUser .userPhoto {
+  width: 50%;
+  border-bottom: #F5F3EF solid 1px;
 }
-.container-fluid-homepage #banner img {
-  width: 100%;
+.infoUser .userPhoto img {
+  height: 135px;
+  width: 135px;
+  border-radius: 100px;
 }
-.container-fluid-homepage #about {
-  padding-bottom: 10rem;
-}
-.container-fluid-homepage #about h3 {
-  padding-bottom: 2rem;
-}
-.container-fluid-homepage #about span {
+.infoUser .userPhoto a {
+  border-bottom: 1px solid;
   color: #A6A6A6;
-  font-size: 12px;
+  font-size: 14px;
 }
-.container-fluid-homepage #about .vector {
-  position: relative;
-  left: 245px;
-  top: 25px;
+.infoUser .info .dateMember {
+  color: #A6A6A6;
+  font-size: 14px;
+}
+.infoUser .info .littleText {
+  padding-top: 2rem;
+  font-size: 8px;
+  font-weight: 600;
+}
+.infoUser .info .bookNumber {
+  font-size: 14px;
 }
 
 .container-fluid-allBooks {
@@ -244,72 +167,91 @@ footer img {
   object-position: center;
 }
 
-.container-fluid-addBook {
-  background: #FAF9F7;
+footer img {
+  width: 30px;
+  height: 25px;
+}
+
+.container-fluid-header {
+  background: #F5F3EF;
+}
+.container-fluid-header header .nav {
+  height: 80px;
+}
+.container-fluid-header header .nav .logoIcon {
+  background-color: #00AC66;
+  padding: 8px;
+  border-radius: 5px;
+}
+.container-fluid-header header .nav a {
+  font-size: 17px;
+}
+
+.container-fluid-homepage h1, .container-fluid-homepage h2, .container-fluid-homepage h3 {
+  font-family: "Playfair Display", serif;
   color: #292929;
 }
-.container-fluid-addBook #addBook {
+.container-fluid-homepage .container-fluid-discover, .container-fluid-homepage .container-fluid-explanation, .container-fluid-homepage .container-fluid-about {
+  background: #F5F3EF;
+}
+.container-fluid-homepage .container-fluid-lastBook {
+  background-color: #FAF9F7;
+}
+.container-fluid-homepage #discover p {
+  padding: 10px 0 15px 0;
+}
+.container-fluid-homepage #explanation .stage {
   background: #ffffff;
-  border-radius: 20px;
+  height: 139px;
+  border-radius: 10px;
 }
-.container-fluid-addBook #addBook .updatePhoto a {
+.container-fluid-homepage #explanation .btn-primary {
+  background-color: transparent !important;
+  color: #00AC66 !important;
+  border: solid 1px !important;
+}
+.container-fluid-homepage #banner {
+  overflow: hidden;
+}
+.container-fluid-homepage #banner img {
+  width: 100%;
+}
+.container-fluid-homepage #about {
+  padding-bottom: 10rem;
+}
+.container-fluid-homepage #about h3 {
+  padding-bottom: 2rem;
+}
+.container-fluid-homepage #about span {
+  color: #A6A6A6;
+  font-size: 12px;
+}
+.container-fluid-homepage #about .vector {
+  position: relative;
+  left: 245px;
+  top: 25px;
+}
+
+body {
+  font-family: "Inter", serif;
+  font-weight: 300;
+  color: #000000;
+}
+body h1 {
+  font-family: "Playfair Display";
+}
+body .btn-primary {
+  background-color: #00AC66 !important;
+  border: #00AC66 !important;
+  padding: 15px 25px;
+}
+body a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+}
+body a:hover {
   border-bottom: 1px solid;
-}
-.container-fluid-addBook #addBook .formStyle .form-control, .container-fluid-addBook #addBook .formStyle .form-select {
-  background-color: #F0F0F0;
-  height: 50px;
-}
-.container-fluid-addBook #addBook .formStyle .formContent {
-  height: 350px;
-}
-
-#popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 80%;
-  max-height: 80%;
-  overflow-y: auto;
-  z-index: 1000;
-  display: none;
-}
-
-.container-fluid-myAccount {
-  background: #FAF9F7;
-  color: #292929;
-}
-.container-fluid-myAccount #myAccount .newInfo h3 {
-  font-size: 16px;
-  padding-bottom: 15px;
-}
-.container-fluid-myAccount #myAccount .newInfo .formStyle .foldedCorner .formGrid .form-control {
-  background-color: #F0F0F0;
-  height: 50px;
-}
-.container-fluid-myAccount #myAccount .newInfo .formStyle .foldedCorner .formGrid .btnInfoUser {
-  color: #00AC66 !important;
-  background-color: #F5F3EF !important;
-  border: 1px solid #00AC66 !important;
-  width: auto !important;
-}
-
-.container-fluid-publicProfile {
-  background: #FAF9F7;
-  color: #292929;
-}
-.container-fluid-publicProfile .infoUser {
-  height: 600px;
-}
-.container-fluid-publicProfile .infoUser .btnInfoUser {
-  color: #00AC66 !important;
-  background-color: #F5F3EF !important;
-  border: 1px solid #00AC66 !important;
-  width: auto !important;
 }
 
 .container-fluid-chat {
@@ -368,4 +310,72 @@ footer img {
   padding: 0 2rem 0 1rem;
   margin-bottom: 0.5rem;
   border-radius: 10px;
+}
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.container-fluid-myAccount {
+  background: #FAF9F7;
+  color: #292929;
+}
+.container-fluid-myAccount #myAccount .newInfo h3 {
+  font-size: 16px;
+  padding-bottom: 15px;
+}
+.container-fluid-myAccount #myAccount .newInfo .formStyle .foldedCorner .formGrid .form-control {
+  background-color: #F0F0F0;
+  height: 50px;
+}
+.container-fluid-myAccount #myAccount .newInfo .formStyle .foldedCorner .formGrid .btnInfoUser {
+  color: #00AC66 !important;
+  background-color: #F5F3EF !important;
+  border: 1px solid #00AC66 !important;
+  width: auto !important;
+}
+
+.container-fluid-publicProfile {
+  background: #FAF9F7;
+  color: #292929;
+}
+.container-fluid-publicProfile .infoUser {
+  height: 600px;
+}
+.container-fluid-publicProfile .infoUser .btnInfoUser {
+  color: #00AC66 !important;
+  background-color: #F5F3EF !important;
+  border: 1px solid #00AC66 !important;
+  width: auto !important;
+}
+
+.container-fluid-addBook {
+  background: #FAF9F7;
+  color: #292929;
+}
+.container-fluid-addBook #addBook {
+  background: #ffffff;
+  border-radius: 20px;
+}
+.container-fluid-addBook #addBook .updatePhoto a {
+  border-bottom: 1px solid;
+}
+.container-fluid-addBook #addBook .formStyle .form-control, .container-fluid-addBook #addBook .formStyle .form-select {
+  background-color: #F0F0F0;
+  height: 50px;
+}
+.container-fluid-addBook #addBook .formStyle .formContent {
+  height: 350px;
 }

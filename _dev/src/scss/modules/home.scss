@@ -18,10 +18,17 @@
     }
   }
 
-  #explanation .stage{
+  #explanation{
+    .stage {
     background: #ffffff;
     height: 139px;
     border-radius: 10px;
+    }
+    .btn-primary{
+      background-color: transparent !important;
+      color: #00AC66 !important;
+      border: solid 1px !important;
+    }
   }
 
   #banner{

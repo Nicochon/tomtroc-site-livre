@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="connection-form formStyle col-md-4 d-flex flex-column justify-content-center ">
                     <form action="index.php?action=connectUser" method="post" class="foldedCorner pb-4">
-                        <h2>Connexion</h2>
+                        <h1>Connexion</h1>
                         <?php echo ''; ?>
                         <?php if($error != ''): ?>
                         <p class="text-danger strong"><?php echo $error; ?></p>

@@ -1,3 +1,10 @@
+<div class="container-fluid-littleTitlePage pb-3">
+    <div class="container">
+        <div class="row">
+            <span>Nos livres > <?php echo $dataBook->getTitle(); ?></span>
+        </div>
+    </div>
+</div>
 <div class="container-fluid-bookPage">
     <div class="container">
         <div id="bookPage">
@@ -5,7 +12,7 @@
                 <div class="col-md-6">
                     <img class="img-fluid bookImage" src="<?php echo ROOT_DIR; ?>/views/img/book/<?php echo $userPhoto; ?>"/>
                 </div>
-                <div class="col-md-5 dataBook">
+                <div class="col-md-5 dataBook p-5 ">
                     <h1><?php echo $dataBook->getTitle(); ?></h1>
                     <p class="dataBook-author pb-4">par <?php echo $dataBook->getAuthor(); ?></p>
                     <div class="style"></div>
