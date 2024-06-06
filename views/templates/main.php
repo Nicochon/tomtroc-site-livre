@@ -30,7 +30,7 @@
     <div class="container">
         <header>
             <nav>
-                <div class="row">
+                <div class="row d-flex justify-content-start align-items-center">
                     <div class="col">
                         <div class="row nav">
                             <div class="d-flex justify-content-start align-items-center">
