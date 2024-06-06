@@ -113,12 +113,12 @@ class AdminController
     public function connectUser()
     {
         // On récupère les données du formulaire.
-        $pseudo = htmlspecialchars(Utils::request("pseudo"));
+        $email = htmlspecialchars(Utils::request("pseudo"));
         $password = htmlspecialchars(Utils::request("password"));
         
         // On vérifie que l'utilisateur existe.
         $userManager = new UserManager();
-        $user = $userManager->getUserByPseudo($pseudo);
+        $user = $userManager->getUserByEmail($email);
         $errorMessage = false;
         // On vérifie si le pseudo est correct
         if (!$user){

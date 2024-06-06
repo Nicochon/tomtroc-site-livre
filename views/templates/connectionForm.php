@@ -16,7 +16,7 @@
                         <?php endif; ?>
                         <div class="formGrid pt-5">
                             <div class="mb-4">
-                                <label for="pseudo" class="form-label">Pseudo</label>
+                                <label for="email" class="form-label">Adresse email</label>
                                 <input class="form-control" type="text" name="pseudo" id="pseudo" required>
                             </div>
                             <div class="mb-5">
