@@ -16,11 +16,17 @@ class BookController
 
         $ownerData = $this->getOwnerInfo($bookData->getOwnerId());
 
+        $idUser = '';
+        if(isset($_SESSION['user'])){
+            $idUser = $_SESSION['user']->getId();
+        }
+
         $view = new View("BookPage");
         $view->render("bookPage",[
             'dataBook' => $bookData,
-            'dataUser' => $ownerData,
-            'userPhoto' => $userPhoto
+            'dataOwner' => $ownerData,
+            'userPhoto' => $userPhoto,
+            'idUser' => $idUser,
         ]);
     }
 

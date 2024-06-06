@@ -30,10 +30,16 @@ class AdminController
         $bookController = new BookController();
         $booksInfo = $bookController->getBookInfo($idUser);
 
+        $idSession = '';
+        if(isset($_SESSION['user'])){
+            $idSession = $_SESSION['user']->getId();
+        }
+
         $view = new View("PublicProfile");
         $view->render("publicProfile", [
             'userInfo' => $userData,
             'booksInfo' => $booksInfo,
+            'idSession' => $idSession
         ]);
     }
 
