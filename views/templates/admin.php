@@ -8,7 +8,7 @@
     <div class="container">
         <div id="myAccount" class="pt-5">
             <h2>Mon compte</h2>
-            <div class="info row d-flex justify-content-around pt-5 pb-5 ">
+            <div class="info row gx-5 d-flex justify-content-between pt-5 pb-5 ">
                 <div class="infoUser col-md-5 text-center d-flex flex-column align-items-center ">
                     <div class="userPhoto pt-5 pb-5">
                         <img id="profilePicture" class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/admin/<?php echo $userInfo['imgName']; ?>" alt="Photo de profil"/>
@@ -53,12 +53,12 @@
                 <table class="table table-striped table-hover custom-table">
                     <thead>
                         <tr>
-                            <th scope="col">Photo</th>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Auteur</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Disponibilité</th>
-                            <th scope="col" colspan="2" >Action</th>
+                            <th scope="col">PHOTO</th>
+                            <th scope="col">TITRE</th>
+                            <th scope="col">AUTEUR</th>
+                            <th scope="col"  class="description-col">DESCRIPTION</th>
+                            <th scope="col">DISPONIBILITÉ</th>
+                            <th scope="col" colspan="2" >ACTION</th>
                         </tr>
                     </thead>
                     <tbody>

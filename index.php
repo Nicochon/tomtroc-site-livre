@@ -20,10 +20,12 @@ try {
         case 'connectUser':
             $adminController = new AdminController();
             $adminController->connectUser();
+            break;
 
         case 'disconnectUser':
             $adminController = new AdminController();
             $adminController->disconnectUser();
+            break;
 
         case 'createUserForm':
             $adminController = new AdminController();
@@ -83,12 +85,12 @@ try {
         case 'updateBook':
             $bookController = new BookController();
             $bookController->updateBook();
-        break;
+            break;
 
         case 'deleteBookVerification':
             $bookController = new BookController();
             $bookController->displayDeleteBookVerification();
-        break;
+            break;
 
         case 'deleteBook':
             $bookController = new BookController();
@@ -118,9 +120,10 @@ try {
         case 'postNewMessage':
             $messageController = new MessageController();
             $messageController->postMessage();
-
+            break;
 
     }
+
 } catch (Exception $e) {
     // En cas d'erreur, on affiche la page d'erreur.
     $errorView = new View('Erreur');

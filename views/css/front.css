@@ -76,6 +76,9 @@
   font-size: 8px;
   font-weight: 600;
 }
+.books .custom-table thead .description-col {
+  width: 20%;
+}
 .books .custom-table tbody tr {
   height: 150px;
 }

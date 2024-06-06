@@ -25,7 +25,7 @@
                                 <th scope="col">Photo</th>
                                 <th scope="col">Titre</th>
                                 <th scope="col">Auteur</th>
-                                <th scope="col">Description</th>
+                                <th scope="col" class="description-col">Description</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -8,7 +8,7 @@
         <div id="createUser">
             <div class="row">
                 <div class="connection-form col-md-4 d-flex flex-column justify-content-center ">
-                    <form action="index.php?action=createUser" method="post" class="foldedCorner pb-4">
+                    <form action="index.php?action=createUser" method="post" class="foldedCorner formStyle pb-4">
                         <h2>Inscription</h2>
                         <div class="formGrid pt-5">
                             <?php if($errorPseudo != ''): ?>
