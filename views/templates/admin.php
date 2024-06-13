@@ -76,9 +76,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="addBook btn btn-primary pt-3 d-flex justify-content-center">
-                <a href="index.php?action=addBookForm">Ajouter</a>
-            </div>
         </div>
     </div>
 </div>

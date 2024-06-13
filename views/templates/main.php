@@ -47,6 +47,11 @@
                                 </li>
                             </ul>
                         </div>
+                        <?php if (isset($_SESSION['user']) && isset($_GET['action']) && $_GET['action'] === 'admin'): ?>
+                        <div class="addBook">
+                            <a href="index.php?action=addBookForm"><img src="<?php echo ROOT_DIR; ?>/views/img/home/logoAjouter.png" alt="logo" width="50px" height="50px"/></a>
+                        </div>
+                        <?php endif; ?>
                        <div class="col-md-6">
                            <ul class="navbar-nav d-flex justify-content-end">
                                <?php if (isset($_SESSION['user'])): ?>
