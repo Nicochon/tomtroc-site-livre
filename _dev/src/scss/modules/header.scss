@@ -1,16 +1,36 @@
 .container-fluid-header{
   background: #F5F3EF;
+
+  a{
+    &:hover{
+      border: none;
+      font-weight: bold;
+    }
+  }
+
   header{
     .nav{
+      background: #F5F3EF !important;
       height: 80px;
+      font-weight: 600;
+      font-size: 14px;
+
       .logoIcon{
         background-color: $background-btn-color;
         padding: 8px;
         border-radius: 5px;
       }
-      a{
-        font-size: 17px;
+
+      .logo{
+        color: $background-btn-color;
+        font-size: 20px;
       }
     }
+  }
+}
+
+@media (max-width: 980px) {
+  #navbarNav{
+    background-color: #F5F3EF;
   }
 }

@@ -175,18 +175,31 @@ footer img {
 .container-fluid-header {
   background: #F5F3EF;
 }
+.container-fluid-header a:hover {
+  border: none;
+  font-weight: bold;
+}
 .container-fluid-header header .nav {
+  background: #F5F3EF !important;
   height: 80px;
+  font-weight: 600;
+  font-size: 14px;
 }
 .container-fluid-header header .nav .logoIcon {
   background-color: #00AC66;
   padding: 8px;
   border-radius: 5px;
 }
-.container-fluid-header header .nav a {
-  font-size: 17px;
+.container-fluid-header header .nav .logo {
+  color: #00AC66;
+  font-size: 20px;
 }
 
+@media (max-width: 980px) {
+  #navbarNav {
+    background-color: #F5F3EF;
+  }
+}
 .container-fluid-homepage h1, .container-fluid-homepage h2, .container-fluid-homepage h3 {
   font-family: "Playfair Display", serif;
   color: #292929;
