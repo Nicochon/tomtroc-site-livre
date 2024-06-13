@@ -21,6 +21,7 @@ class MessageController
         $conversations = $conversationManager->getConversationByUserAdmin($idUser);
 
         $data = $this->getDataConversations($idUser, $conversations);
+        $getDate = $this->dateConversion($data, 'dateHeure');
 
         $userManager = new UserManager();
         $imgManager = new ImgManager();
@@ -35,7 +36,7 @@ class MessageController
 
         $view = new View('Chat');
         $view->render('chat',[
-            'conversations' => $data,
+            'conversations' => $getDate,
             'newConversations' => $dataNewContact
         ]);
     }
@@ -121,6 +122,28 @@ class MessageController
         ];
 
         return $data;
+    }
+
+    public function dateConversion($datas, $type)
+    {
+        $currentDateTime = new DateTime();
+        $dateA = new DateTime($currentDateTime->format('Y-m-d H:i:s'));
+        foreach ($datas as $data){
+            foreach ($data['conversations'] as $conversation){
+                $dateB = new DateTime($conversation->getDate());
+                $interval = $dateA->diff($dateB);
+                $totalHours = ($interval->days * 24) + $interval->h + ($interval->i / 60) + ($interval->s / 3600);
+
+                if ($totalHours >= 24){
+                    $formattedDate = $dateB->format('m-d');
+                } else {
+                    $formattedDate = $dateB->format('H:i');
+                }
+                $conversation->setDate($formattedDate);
+            }
+        }
+
+        return $datas;
     }
 
 

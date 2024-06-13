@@ -6,7 +6,7 @@
 <div class="container-fluid-formCreateUser">
     <div class="container">
         <div id="createUser">
-            <div class="row">
+            <div class="row d-flex justify-content-between">
                 <div class="connection-form col-md-4 d-flex flex-column justify-content-center ">
                     <form action="index.php?action=createUser" method="post" class="foldedCorner formStyle pb-4">
                         <h1>Inscription</h1>
@@ -33,7 +33,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/form/form_create_connect_user.jpg" alt="étagère rempli de livre"/>
                 </div>
             </div>

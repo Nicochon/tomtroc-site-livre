@@ -6,7 +6,7 @@
 <div class="container-fluid-connection">
     <div class="container">
         <div id="connection">
-            <div class="row">
+            <div class="row d-flex justify-content-between">
                 <div class="connection-form formStyle col-md-4 d-flex flex-column justify-content-center ">
                     <form action="index.php?action=connectUser" method="post" class="foldedCorner pb-4">
                         <h1>Connexion</h1>
@@ -28,7 +28,7 @@
                     </form>
                     <p>Pas de compte ? <a href="index.php?action=createUserForm">inscrivez-vous</a></p>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/form/form_create_connect_user.jpg" alt="étagère rempli de livre"/>
                 </div>
             </div>

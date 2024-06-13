@@ -10,6 +10,9 @@ body{
     background-color: $background-btn-color !important;
     border: $background-btn-color !important;
     padding: 15px 25px;
+    &:hover{
+      background-color: #008552 !important;
+    }
   }
   a{
     outline: none;

@@ -43,7 +43,7 @@
                             <div class="scrollBar">
                                 <?php foreach (array_reverse ($conversations[0]['conversations']) as $content):
                                     if($content->getIdOwner() === $_SESSION['user']->getId()): ?>
-                                        <div class="message d-flex align-items-end flex-column">
+                                        <div class="message d-flex align-items-end flex-column pe-4">
                                             <span><?php echo $content->getDate(); ?></span>
                                             <div class="myMessage d-flex flex-column align-items-end">
                                                 <p class="pt-2"><?php echo $content->getContent(); ?></p>

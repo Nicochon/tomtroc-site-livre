@@ -21,10 +21,10 @@
                     <p class="section-Title">Proriétaire</p>
                     <a href="index.php?action=displayPublicProfile&id=<?php echo $dataOwner['id']; ?>">
                         <div class="row seller-badge">
-                            <div class="col-md-4 p-2">
+                            <div class="col-md-4 col-5 p-2">
                                 <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/admin/<?php echo $dataOwner['photo']; ?>"/>
                             </div>
-                            <div class="col-md-5 pseudo-badge pt-4">
+                            <div class="col-md-5 col-7 pseudo-badge pt-4">
                                 <p><?php echo $dataOwner['pseudo']; ?></p>
                             </div>
                         </div>

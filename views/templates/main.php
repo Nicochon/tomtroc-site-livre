@@ -32,7 +32,7 @@
         <header>
             <nav class="nav navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand logo pe-5" href="#"><img class="logoIcon me-1" src="<?php echo ROOT_DIR; ?>/views/img/home/logo.png" alt="logo"/>Tom Troc</a>
+                    <a class="navbar-brand logo pe-5" href="index.php?action=home"><img class="logoIcon me-1" src="<?php echo ROOT_DIR; ?>/views/img/home/logo.png" alt="logo"/>Tom Troc</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

@@ -16,7 +16,7 @@
             <div class="row d-flex justify-content-between pt-4 pb-1">
                 <?php if (!empty($dataBooks)): ?>
                     <?php foreach ($dataBooks as $dataBook): ?>
-                        <div class="col-md-2 m-4 p-0 book-card">
+                        <div class="col-md-2 col-4 m-4 p-0 book-card">
                             <a href="index.php?action=displayBook&idBook=<?php echo $dataBook['idBook']; ?>">
                                 <div><img class="img-fluid" src="<?php echo ROOT_DIR ?>/views/img/book/<?php echo $dataBook['imgName']; ?>" alt="couverture du livre: <?php echo $dataBook['title']; ?>"/></div>
                                 <div class="title-book-card"><p><?php echo $dataBook['title']; ?></p></div>

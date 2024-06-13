@@ -199,6 +199,9 @@ footer img {
   #navbarNav {
     background-color: #F5F3EF;
   }
+  #navbarNav ul {
+    padding-left: 15px;
+  }
 }
 .container-fluid-homepage h1, .container-fluid-homepage h2, .container-fluid-homepage h3 {
   font-family: "Playfair Display", serif;
@@ -249,6 +252,11 @@ footer img {
   #banner .banner-img {
     content: url("../img/home/bannerMobil.png");
   }
+  .container-fluid-homepage #about .vector {
+    position: relative;
+    left: 40px;
+    top: 25px;
+  }
 }
 body {
   font-family: "Inter", serif;
@@ -262,6 +270,9 @@ body .btn-primary {
   background-color: #00AC66 !important;
   border: #00AC66 !important;
   padding: 15px 25px;
+}
+body .btn-primary:hover {
+  background-color: #008552 !important;
 }
 body a {
   outline: none;
