@@ -245,6 +245,11 @@ footer img {
   top: 25px;
 }
 
+@media (max-width: 575px) {
+  #banner .banner-img {
+    content: url("../img/home/bannerMobil.png");
+  }
+}
 body {
   font-family: "Inter", serif;
   font-weight: 300;

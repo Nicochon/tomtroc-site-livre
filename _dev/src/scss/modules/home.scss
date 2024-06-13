@@ -55,6 +55,14 @@
   }
 }
 
+@media (max-width: 575px) {
+  #banner {
+    .banner-img{
+      content: url('../img/home/bannerMobil.png');
+    }
+  }
+}
+
 
 
 

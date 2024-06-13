@@ -9,16 +9,14 @@
     <div class="container-fluid-discover">
         <div class="container">
             <div id="discover">
-                <div class="row">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-md-4 d-flex flex-column justify-content-center m-5">
-                            <h1>Rejoignez nos lecteur passionnés</h1>
-                            <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
-                            <div><a class="btn btn-primary" href="index.php?action=displayAllBooks">Découvrir</a></div>
-                        </div>
-                        <div class="col-md-4 m-5">
-                            <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/home/photoHome.jpeg" alt="personne qui lit entouré de nombreux livres"/>
-                        </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-4 col-12 d-flex flex-column justify-content-center m-5">
+                        <h1>Rejoignez nos lecteur passionnés</h1>
+                        <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.</p>
+                        <div><a class="btn btn-primary" href="index.php?action=displayAllBooks">Découvrir</a></div>
+                    </div>
+                    <div class="col-md-4 m-5">
+                        <img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/home/photoHome.jpeg" alt="personne qui lit entouré de nombreux livres"/>
                     </div>
                 </div>
             </div>
@@ -34,7 +32,7 @@
                 <div class="row d-flex justify-content-center pt-4 pb-4">
                     <?php if(!empty($books)):
                         foreach ($books as $book):?>
-                            <div class="col-md-2 m-4 p-0 book-card">
+                            <div class="col-4 col-md-2 m-4 p-0 book-card">
                                 <a href="index.php?action=displayBook&idBook=<?php echo $book['idBook']; ?>">
                                     <div><img class="img-fluid" src="<?php echo ROOT_DIR; ?>/views/img/book/<?php echo $book['imgName']; ?>" alt="couverture du livre: <?php echo $book['title']; ?>"/></div>
                                     <div class="title-book-card"><p><?php echo $book['title']; ?></p></div>
@@ -58,11 +56,11 @@
                 <div class="d-flex flex-column align-items-center">
                     <h3>Comment ça marche ?</h3>
                     <p>Echanger des livres avec TomTroc c'est simple et amusant ! suivez ces étapes pour commencer:</p>
-                    <div class="row text-center d-flex justify-content-center p-3">
-                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p>Inscrivez-vous gratuitement.</p></div>
-                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p>Ajoutez les livres que vous souhaitez échanger à votre profil.</p></div>
-                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p>Parcourz les livres disponibles chez d'autres membres.</p></div>
-                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
+                    <div class="row d-flex justify-content-center p-3">
+                        <div class="stage col-md-2 m-4 d-flex align-items-center justify-content-center"><p>Inscrivez-vous gratuitement.</p></div>
+                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p class="text-center">Ajoutez les livres que vous souhaitez échanger à votre profil.</p></div>
+                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p class="text-center">Parcourz les livres disponibles chez d'autres membres.</p></div>
+                        <div class="stage col-md-2 m-4 d-flex align-items-center"><p class="text-center">Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
                     </div>
                     <a class="btn btn-primary" href="index.php?action=displayAllBooks">Voir tous les livres</a>
                 </div>
@@ -72,7 +70,7 @@
 
     <div class="container-fluid-banner">
         <div id="banner" class="">
-            <div><img  src="<?php echo ROOT_DIR; ?>/views/img/home/banner.png" alt="une personne cherche un livre dans une bibliothéque"></div>
+            <img class="banner-img" src="<?php echo ROOT_DIR; ?>/views/img/home/banner.png" alt="une personne cherche un livre dans une bibliothéque">
         </div>
     </div>
 
