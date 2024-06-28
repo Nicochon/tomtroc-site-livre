@@ -5,6 +5,7 @@ require_once 'config/_config.php';
 
 $action = Utils::request('action', 'home');
 
+
 try {
     switch ($action) {
         case 'home':
@@ -121,7 +122,8 @@ try {
             $messageController = new MessageController();
             $messageController->postMessage();
             break;
-
+        default:
+            throw new Exception("La page demandée n'existe pas.");
     }
 
 } catch (Exception $e) {

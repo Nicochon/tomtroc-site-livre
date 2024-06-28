@@ -55,9 +55,9 @@
             <div id="explanation" class="pt-5 pb-5">
                 <div class="d-flex flex-column align-items-center">
                     <h3>Comment ça marche ?</h3>
-                    <p>Echanger des livres avec TomTroc c'est simple et amusant ! suivez ces étapes pour commencer:</p>
+                    <p class="text-center">Echanger des livres avec TomTroc c'est simple et amusant ! suivez ces étapes pour commencer :</p>
                     <div class="row d-flex justify-content-center p-3">
-                        <div class="stage col-md-2 m-4 d-flex align-items-center justify-content-center"><p>Inscrivez-vous gratuitement.</p></div>
+                        <div class="stage col-md-2 m-4 d-flex align-items-center justify-content-center"><p class="text-center">Inscrivez-vous gratuitement.</p></div>
                         <div class="stage col-md-2 m-4 d-flex align-items-center"><p class="text-center">Ajoutez les livres que vous souhaitez échanger à votre profil.</p></div>
                         <div class="stage col-md-2 m-4 d-flex align-items-center"><p class="text-center">Parcourz les livres disponibles chez d'autres membres.</p></div>
                         <div class="stage col-md-2 m-4 d-flex align-items-center"><p class="text-center">Proposez un échange et discutez avec d'autres passionnés de lecture.</p></div>
